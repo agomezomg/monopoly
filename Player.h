@@ -9,7 +9,7 @@ using std::vector;
 using std::stringstream;
 using std::string;
 
-class Player : public Table
+class Player
 {
 protected:
 	vector<Properties*> properties;
@@ -18,8 +18,7 @@ protected:
 	int moneyOwned;
 	int position;
 	bool getOutJail;
-
-	int turnControl;
+	int spaces;
 public:
 	Player();
 	~Player();
@@ -36,6 +35,6 @@ public:
 	void setCanGetOutJail();
 	string toString();
 	int getTurnControl();
-	void setTurnControl(int);
+	void TurnControl(int);
 
 };

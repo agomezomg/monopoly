@@ -4,7 +4,7 @@
 #include "Properties.h"
 
 Properties::Properties() {
-
+	this -> owned = false;
 }
 
 Properties::~Properties() {
