@@ -1,6 +1,6 @@
 #pragma once
-#include "Table.h"
 #include "Propiedades.h"
+#include "Table."
 #include <string>
 #include <sstream>
 #include <vector>
@@ -9,7 +9,7 @@ using std::vector;
 using std::stringstream;
 using std::string;
 
-class Player
+class Player : public Table
 {
 protected:
 	vector<Propiedades*> properties;

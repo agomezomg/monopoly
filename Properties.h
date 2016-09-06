@@ -1,7 +1,10 @@
 #pragma once
 #include "Table.h"
+#include <string>
 
-class Propiedades : public Table
+using std::string;
+
+class Properties : public Table
 {
 protected:
 	int price;
@@ -9,10 +12,10 @@ protected:
 	int sale;
 	bool owned = false;
 	int mortgage;
-
+	string color;
 public:
-	Propiedades();
-	~Propiedades();
+	Properties();
+	~Properties();
 	int getPrice();
 	void setPrice();
 	int getRent();
@@ -21,4 +24,6 @@ public:
 	void setOwned();
 	int getMortgage();
 	void setMortgage();
+	string getColor();
+	void setColor();
 };

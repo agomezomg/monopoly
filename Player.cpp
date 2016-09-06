@@ -1,4 +1,3 @@
-#include "Table.h"
 #include "Player.h"
 
 Player::Player() {
@@ -13,7 +12,21 @@ Player::~Player() {
 
 }
 
+string Player::getName() {
+	return this -> name;
+}
 
+void Player::setName() {
+	return this -> name;
+}
+
+int Player::getPosition() {
+	return this -> position;
+}
+
+void Player::setPosition() {
+	this -> position = position;
+}
 
 void Player::setTurnControl(int turnControl){
 	if((this -> turnControl + turnControl) >= 40){
@@ -27,6 +40,6 @@ void Player::setTurnControl(int turnControl){
 
 Player::toString() {
 	stringstream ss;
-	ss << "Name: " << name << " you have $" << moneyOwned << " and you are in the square " << turn;
+	ss << "Name: " << name << " you have $" << moneyOwned << " and you are in square: " << turnControl;
 return ss.str();
 }
