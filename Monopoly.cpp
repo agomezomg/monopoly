@@ -89,7 +89,7 @@ int main(int argc, char const *argv[])
 					mvprintw(6,80,"1.-Throwing dice\n");
 					mvprintw(7,80,"2.-See your properties\n");
 					mvprintw(8,80,"3.-See your data\n");
-					mvprintw(9,80,"4.-Quick\n");
+					mvprintw(9,80,"4.-Quit\n");
 					mvprintw(10,80,"5.-Save game\n");
 					mvprintw(11,80,"6.-End of the game\n");
 					mvprintw(12,80,"Your option? -> ");
@@ -98,7 +98,7 @@ int main(int argc, char const *argv[])
 						dice1 = (1 + rand() % 6);
 						dice2 = (1 + rand() % 6);
 						int spaces = dice1 + dice2;
-						Jugador1 -> setTurnControl(spaces);
+						Jugador1 -> TurnControl(spaces);
 						init_pair(1, COLOR_BLACK, COLOR_WHITE);
 						attron(COLOR_PAIR(1));
 						drawDiceOne(dice1);
