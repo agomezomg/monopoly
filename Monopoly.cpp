@@ -8,6 +8,8 @@
 #include "Cards.h"
 void boardPic();
 void cleanScreen();
+void drawDiceOne(int);
+void drawDiceTwo(int);
 
 
 int main(int argc, char const *argv[])
@@ -73,8 +75,8 @@ int main(int argc, char const *argv[])
 		board.push_back(new tax());
 		board.push_back(new avenues(400,200,false,50));*/
 		//Falta La Inicializacion de las fichas 
-			Player* Jugador1=new Player(Juana,2000);
-			Player* Jugador2=new Player(Juanito,2000);
+			Player* Jugador1=new Player("Juana",2000);
+			Player* Jugador2=new Player("Juanito",2000);
 			do
 			{
 				int ControlTurno=0,dice1=0,dice2=0;
@@ -82,7 +84,7 @@ int main(int argc, char const *argv[])
 				if (ControlTurno%2==0)
 				{
 					mvprintw(4,80, "Player %d",ControlTurno);
-					mvprintw(4,89, player1 -> getName());
+					mvprintw(4,89, Jugador1 -> getName().c_str());
 					mvprintw(5,80,"Choose your option...");
 					mvprintw(6,80,"1.-Throwing dice\n");
 					mvprintw(7,80,"2.-See your properties\n");
@@ -95,8 +97,8 @@ int main(int argc, char const *argv[])
 					if(keyPlayer[0] == '1'){
 						dice1 = (1 + rand() % 6);
 						dice2 = (1 + rand() % 6);
-						spaces = dice1 + dice2;
-						player1 -> setTurn(spaces);
+						int spaces = dice1 + dice2;
+						Jugador1 -> setTurnControl(spaces);
 						init_pair(1, COLOR_BLACK, COLOR_WHITE);
 						attron(COLOR_PAIR(1));
 						drawDiceOne(dice1);
@@ -105,16 +107,10 @@ int main(int argc, char const *argv[])
 						noecho();
 						//getch();
 						cleanScreen();
-						board.at(player1 -> getTurn()) -> printSquare(player1 -> getTurn());
-						mvprintw(32,20, board.at(player1 -> getTurn()) -> toString().c_str());
-						getch();
-						echo();
-						getch();
-						cleanScreen();
 						ControlTurno++;
-					}/* else if (keyPlayer[0] == '2'){
+					}
 								
-				}*/
+				}
 		} while (false!=false);
 	}
 }

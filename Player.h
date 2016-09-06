@@ -9,7 +9,7 @@ using std::vector;
 using std::stringstream;
 using std::string;
 
-class Player : public Table
+class Player 
 {
 protected:
 	vector<Properties*> properties;

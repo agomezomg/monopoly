@@ -1,5 +1,5 @@
 Monopoly:	Table.o Cards.o Properties.o Player.o Avenue.o Monopoly.o
-	g++ Table.o Cards.o Properties.o Player.o Avenues.o Monopoly.o -lncurses -o Monopoly
+	g++ Table.o Cards.o Properties.o Player.o Avenue.o Monopoly.o -lncurses -o Monopoly
 
 Monopoly.o:	Monopoly.cpp Player.h Avenue.h Properties.h Cards.h Table.h
 	g++ -c Monopoly.cpp
