@@ -18,6 +18,8 @@ protected:
 	int moneyOwned;
 	int position;
 	bool getOutJail;
+
+	int turnControl;
 public:
 	Player();
 	~Player();
@@ -33,4 +35,9 @@ public:
 	bool canGetOutJail();
 	void setCanGetOutJail();
 	string toString();
+
+//-------------------------------------------------------------------------------------------------------------------------
+	int Player::getTurnControl();
+	void Player::setTurnControl(int);
+
 };

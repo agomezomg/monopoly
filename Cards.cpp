@@ -30,6 +30,18 @@ void Cards::setCardTitle(string cardTitle) {
 	this -> cardTitle = cardType;
 }
 
+string Cards::getCardTitle() {
+	return this -> cardTitle;
+}
+
+void Cards::setCardDescription(string cardDescription) {
+	this -> cardDescription = cardDescription;
+}
+
+string Cards::getCardDescription() {
+	return this -> cardDescription;
+}
+
 string Cards::toString() {
 	stringstream ss;
 	ss << "Card";
