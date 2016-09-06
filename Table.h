@@ -3,11 +3,11 @@
 
 using std::string;
 
-class table
+class Table
 {
 public:
-	table();
-	virtual ~table();
+	Table();
+	virtual ~Table();
 	virtual string toString()const = 0;
 	virtual void printTable() = 0;
 };

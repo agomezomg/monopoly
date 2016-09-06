@@ -14,7 +14,7 @@ class Player : public Table
 protected:
 	vector<Properties*> properties;
 	string name;
-	bool inJail = false;
+	bool inJail;
 	int moneyOwned;
 	int position;
 	bool getOutJail;
@@ -23,7 +23,7 @@ protected:
 public:
 	Player();
 	~Player();
-	Player(string, moneyOwned); //player name or piece name
+	Player(string, int); //player name or piece name, money owned
 	string getName();
 	void setName(string);
 	bool checkInJail();
@@ -35,9 +35,7 @@ public:
 	bool canGetOutJail();
 	void setCanGetOutJail();
 	string toString();
-
-//-------------------------------------------------------------------------------------------------------------------------
-	int Player::getTurnControl();
-	void Player::setTurnControl(int);
+	int getTurnControl();
+	void setTurnControl(int);
 
 };
