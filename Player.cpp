@@ -16,15 +16,15 @@ string Player::getName() {
 	return this -> name;
 }
 
-void Player::setName() {
-	return this -> name;
+void Player::setName(string name) {
+	this -> name = name;
 }
 
 int Player::getPosition() {
 	return this -> position;
 }
 
-void Player::setPosition() {
+void Player::setPosition(int position) {
 	this -> position = position;
 }
 
@@ -38,7 +38,7 @@ void Player::setTurnControl(int turnControl){
 	}
 }
 
-Player::toString() {
+string Player::toString() {
 	stringstream ss;
 	ss << "Name: " << name << " you have $" << moneyOwned << " and you are in square: " << turnControl;
 return ss.str();

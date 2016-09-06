@@ -11,12 +11,12 @@ Properties::~Properties() {
 
 }
 
-int Properties::getPrice() {
-	return this -> price;
-}
-
 void Properties::setPrice(int price) {
 	this -> price = price;
+}
+
+int Properties::getPrice() {
+	return this -> price;
 }
 
 int Properties::getRent() {
@@ -25,6 +25,14 @@ int Properties::getRent() {
 
 void Properties::setRent(int rent) {
 	this -> rent = rent;
+}
+
+int Properties::getSalePrice() {
+	return this -> sale;
+}
+
+void Properties::setSalePrice(int sale) {
+	this -> sale = sale;
 }
 
 bool Properties::getOwned() {
@@ -47,6 +55,14 @@ string Properties::getColor() {
 	return color;
 }
 
-void Properties::setColor() {
+void Properties::setColor(string color) {
 	this -> color = color;
+}
+
+int Properties::getPosition() {
+	return this -> position;
+}
+
+void Properties::setPosition(int position) {
+	this -> position = position;
 }
