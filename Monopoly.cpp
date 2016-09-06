@@ -105,13 +105,14 @@ int main(int argc, char const *argv[])
 						drawDiceTwo(dice2);
 						attroff(COLOR_PAIR(1));
 						noecho();
-						//getch();
+						getch();
 						cleanScreen();
-						ControlTurno++;
+						
+						
 					}
 								
 				}
-		} while (false!=false);
+		} while (true);
 	}
 }
 
