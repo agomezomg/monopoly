@@ -1,6 +1,6 @@
 #pragma once
 #include "Properties.h"
-#include "Table."
+#include "Table.h"
 #include <string>
 #include <sstream>
 #include <vector>
