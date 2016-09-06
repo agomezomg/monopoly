@@ -1,5 +1,5 @@
 #pragma once
-#include "Propiedades.h"
+#include "Properties.h"
 #include "Table."
 #include <string>
 #include <sstream>
@@ -12,7 +12,7 @@ using std::string;
 class Player : public Table
 {
 protected:
-	vector<Propiedades*> properties;
+	vector<Properties*> properties;
 	string name;
 	bool inJail = false;
 	int moneyOwned;

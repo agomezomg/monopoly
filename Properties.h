@@ -7,6 +7,7 @@ using std::string;
 class Properties : public Table
 {
 protected:
+	int position;
 	int price;
 	int rent;
 	int sale;
