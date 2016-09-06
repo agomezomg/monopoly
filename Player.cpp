@@ -25,22 +25,18 @@ int Player::getPosition() {
 	return this -> position;
 }
 
-void Player::setPosition(int position) {
-	this -> position = position;
-}
-
-void Player::setTurnControl(int spaces){
-	if((this -> turnControl + turnControl) >= 40){
-		int temp =(this -> turnControl + turnControl) - 40 ;
-		this -> turnControl = temp;
+void Player::TurnControl(int spaces){
+	if((this -> spaces + spaces) >= 40){ //if number of spaces moved is >= 40 
+		int temp =(this -> spaces + spaces) - 40 ;
+		this -> spaces = temp;
 		this -> moneyOwned += 200;
 	} else {
-		this -> turnControl += turnControl;
+		this -> spaces += spaces;
 	}
 }
 
 string Player::toString() {
 	stringstream ss;
-	ss << "Name: " << name << " you have $" << moneyOwned << " and you are in square: " << turnControl;
+	ss << "Name: " << name << " you have $" << moneyOwned << " and you are in square: " << spaces;
 return ss.str();
 }

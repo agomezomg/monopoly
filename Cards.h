@@ -20,5 +20,4 @@ public:
 	void setCardDescription(string);
 	string getCardDescription();
 	string toString();
-	void printTable();
 };

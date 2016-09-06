@@ -34,7 +34,6 @@ public:
 	bool canGetOutJail();
 	void setCanGetOutJail();
 	string toString();
-	int getTurnControl();
 	void TurnControl(int);
 
 };
