@@ -6,6 +6,10 @@
 #include "Player.h"
 #include "Avenue.h"
 #include "Cards.h"
+#include <vector>
+
+using namespace std;
+
 void boardPic();
 void cleanScreen();
 void drawDiceOne(int);
@@ -14,6 +18,14 @@ void drawDiceTwo(int);
 
 int main(int argc, char const *argv[])
 {
+	vector<Properties*> availablePurchases;
+	for (int i = 0; i < 40; ++i)
+	{
+		Properties* p = new Properties();
+		p -> setAll(i);
+		availablePurchases.push_back(p);
+	}
+
 	initscr();
 	echo();
 	char key[1];

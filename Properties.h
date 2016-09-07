@@ -7,7 +7,7 @@ using std::string;
 class Properties : public Table
 {
 protected:
-	int position;
+	string title;
 	int price;
 	int rent;
 	int sale;
@@ -17,8 +17,6 @@ protected:
 public:
 	Properties();
 	~Properties();
-	int getPosition();
-	void setPosition(int);
 	int getPrice();
 	void setPrice(int);
 	int getRent();
@@ -31,4 +29,6 @@ public:
 	void setMortgage(int);
 	string getColor();
 	void setColor(string);
+	void setAll(int);
+	string toString();
 };

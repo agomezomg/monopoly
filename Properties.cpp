@@ -3,6 +3,9 @@
 #include <string>
 #include "Properties.h"
 
+using std::string;
+using std::stringstream;
+
 Properties::Properties() {
 	this -> owned = false;
 }
@@ -59,10 +62,133 @@ void Properties::setColor(string color) {
 	this -> color = color;
 }
 
-int Properties::getPosition() {
-	return this -> position;
+void Properties::setAll(int space) {
+	if (space == 1) {
+	
+	} else if (space == 2) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+		this -> color = "brown";
+	} else if (space == 3) {
+		this -> title = "Community Chest";
+		this -> price = 0;
+		this -> color = "white";
+	} else if (space == 4) {
+		this -> title = "Baltic Avenue";
+		this -> price = 60;
+	} else if (space == 5) {
+		this -> title = "Income tax";
+		this -> price = -200;
+	} else if (space == 6) {
+		this -> title = "Reading Railroad";
+		this -> price = 200;
+	} else if (space == 7) {
+		this -> title = "Oriental Avenue";
+		this -> price = 100;
+	} else if (space == 8) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 9) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 10) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 11) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 12) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 13) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 14) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 15) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 16) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 17) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 18) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 19) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 20) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 21) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 22) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 23) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 24) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 25) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 26) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 27) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 28) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 29) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 30) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 31) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 32) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 33) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 34) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 35) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 36) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 37) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 38) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else if (space == 39) {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	} else {
+		this -> title = "Mediterranean Avenue";
+		this -> price = 60;
+	}
 }
 
-void Properties::setPosition(int position) {
-	this -> position = position;
+string Properties::toString() { //pending
+	stringstream ss;
+	ss << title << ", $" << price;
+	return ss.str();
 }
