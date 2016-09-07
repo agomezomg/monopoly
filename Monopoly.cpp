@@ -27,13 +27,15 @@ int main(int argc, char const *argv[])
 		tablero.push_back(p);
 	}
 
-	/*for (int i = 0; i < count; ++i)
+	for (int i = 0; i < tablero.size(); ++i)
 	{
 		if (i % 5 == 0)
 		{
-			tablero.at(i) = dynamic_cast<Avenue*>(tablero.at(i));
+			Properties* temp = tablero.at(i);
+			temp = dynamic_cast<Avenue*>(tablero.at(i));
+			tablero.at(i) = temp;
 		}
-	}*/
+	}
 
 	initscr();
 	echo();
