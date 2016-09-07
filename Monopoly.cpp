@@ -127,11 +127,12 @@ int main(int argc, char const *argv[])
 						drawDiceOne(dice1);
 						drawDiceTwo(dice2);
 						attroff(COLOR_PAIR(1));
+						tablero.at(spaces) = dynamic_cast<Avenue*>(tablero.at(spaces));
+						tablero.at(spaces)->drawItem(spaces);
 						noecho();
 						getch();
 						cleanScreen();
-						
-						
+
 					}
 								
 				}
