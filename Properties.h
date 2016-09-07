@@ -14,6 +14,7 @@ protected:
 	bool owned;
 	int mortgage;
 	string color;
+	int deduction;
 public:
 	Properties();
 	~Properties();
@@ -31,4 +32,7 @@ public:
 	void setColor(string);
 	void setAll(int);
 	string toString();
+	int getDeduction();
+	void setDeduction();
+	void Properties::drawItem(int space);
 };

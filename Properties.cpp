@@ -194,3 +194,7 @@ string Properties::toString() { //pending
 	ss << title << ", $" << price;
 	return ss.str();
 }
+
+void Properties::drawItem(int space) {
+
+}

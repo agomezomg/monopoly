@@ -9,4 +9,5 @@ public:
 	Table();
 	virtual ~Table();
 	virtual string toString()const;
+	virtual void drawItem(int);
 };
