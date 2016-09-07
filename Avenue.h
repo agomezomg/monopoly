@@ -20,5 +20,6 @@ public:
 	void setHouses();
 	int getHousePrice();
 	void setHousePrice();
+	void printCard(int space);
 	string toString();
 };

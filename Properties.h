@@ -34,5 +34,5 @@ public:
 	string toString();
 	int getDeduction();
 	void setDeduction();
-	void Properties::drawItem(int space);
+	void drawItem(int space);
 };
