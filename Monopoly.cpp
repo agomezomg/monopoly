@@ -29,7 +29,7 @@ int main(int argc, char const *argv[])
 
 	for (int i = 0; i < tablero.size(); ++i)
 	{
-		if (i % 5 == 0)
+		if (i % 5 != 0)
 		{
 			Properties* temp = tablero.at(i);
 			temp = dynamic_cast<Avenue*>(tablero.at(i));
