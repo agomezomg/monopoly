@@ -22,4 +22,5 @@ public:
 	void setHousePrice();
 	void printCard(int space);
 	string toString();
+	void drawItem(int space);
 };

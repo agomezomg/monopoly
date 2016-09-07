@@ -18,14 +18,22 @@ void drawDiceTwo(int);
 
 int main(int argc, char const *argv[])
 {
-	vector<Properties*> availablePurchases;
+	vector<Properties*> tablero;
 	for (int i = 0; i < 40; ++i)
 	{
 		Properties* p;
 		p = new Properties();
 		p -> setAll(i);
-		availablePurchases.push_back(p);
+		tablero.push_back(p);
 	}
+
+	/*for (int i = 0; i < count; ++i)
+	{
+		if (i % 5 == 0)
+		{
+			tablero.at(i) = dynamic_cast<Avenue*>(tablero.at(i));
+		}
+	}*/
 
 	initscr();
 	echo();

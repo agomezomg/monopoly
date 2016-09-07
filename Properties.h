@@ -33,6 +33,6 @@ public:
 	void setAll(int);
 	string toString();
 	int getDeduction();
-	void setDeduction();
+	void setDeduction(int);
 	void drawItem(int space);
 };
