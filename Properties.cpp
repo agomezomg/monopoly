@@ -86,13 +86,15 @@ void Properties::setAll(int space) {
 		this -> title = "Oriental Avenue";
 		this -> price = 100;
 	} else if (space == 8) {
-		this -> title = "Mediterranean Avenue";
-		this -> price = 60;
+		this -> title = "CHANCE";
+		this -> price = 0;
+		this -> color = "CHANCE";
 	} else if (space == 9) {
-		this -> title = "Mediterranean Avenue";
-		this -> price = 60;
+		this -> title = "Vermont Avenue";
+		this -> price = 100;
+		this -> color = "Light Blue";
 	} else if (space == 10) {
-		this -> title = "Mediterranean Avenue";
+		this -> title = "";
 		this -> price = 60;
 	} else if (space == 11) {
 		this -> title = "Mediterranean Avenue";
