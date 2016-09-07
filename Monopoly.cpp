@@ -21,7 +21,8 @@ int main(int argc, char const *argv[])
 	vector<Properties*> availablePurchases;
 	for (int i = 0; i < 40; ++i)
 	{
-		Properties* p = new Properties();
+		Properties* p;
+		p = new Properties();
 		p -> setAll(i);
 		availablePurchases.push_back(p);
 	}

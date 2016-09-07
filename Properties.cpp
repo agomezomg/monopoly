@@ -14,12 +14,12 @@ Properties::~Properties() {
 
 }
 
-void Properties::setPrice(int price) {
-	this -> price = price;
-}
-
 int Properties::getPrice() {
 	return this -> price;
+}
+
+void Properties::setPrice(int price) {
+	this -> price = price;
 }
 
 int Properties::getRent() {
@@ -55,7 +55,7 @@ void Properties::setMortgage(int mortgage) {
 }
 
 string Properties::getColor() {
-	return color;
+	return this -> color;
 }
 
 void Properties::setColor(string color) {
