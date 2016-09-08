@@ -37,4 +37,5 @@ public:
 	void setDeduction(int);
 	void drawItem(int space);
 	void buyPropety(int);
+	string getTitle();
 };

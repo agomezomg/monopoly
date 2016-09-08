@@ -51,6 +51,9 @@ void Player::setMoneyOwned(int Price){
 	this->moneyOwned=this->moneyOwned-Price;
 }
 
+void Player::setMoney_Owned(int Price){
+	this->moneyOwned=this->moneyOwned+Price;
+}
 void Player::setProperties(Properties* Properties){
 	this->properties.push_back(Properties);
 }
@@ -64,3 +67,15 @@ string Player::getProperties(){
 		}	
 return ss.str();
 }
+
+bool Player::validarProperties(string Nombre){
+	for (int i = 0; i < properties.size(); ++i)
+	{
+		if (properties.at(i)->getTitle()==Nombre)
+		{
+			return true;
+		}
+	return false;
+	}
+}
+

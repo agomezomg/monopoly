@@ -18,7 +18,7 @@ Properties::Properties(){
 }
 
 Properties::~Properties(){
-	
+
 }
 
 int Properties::getPrice() {
@@ -269,3 +269,6 @@ void Properties::drawItem(int space) {
    //Nada de nadita
 }
 
+string Properties::getTitle() { //pending
+	return this->title;
+}

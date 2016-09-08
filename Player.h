@@ -28,6 +28,7 @@ public:
 	void setInJail(bool);
 	int getMoneyOwned();
 	void setMoneyOwned(int);
+	void setMoney_Owned(int);
 	int getPosition();
 	void setPosition(int);
 	bool canGetOutJail();
@@ -36,5 +37,5 @@ public:
 	void TurnControl(int);
 	string getProperties();
 	void setProperties(Properties*);
-
+	bool validarProperties(string);
 };

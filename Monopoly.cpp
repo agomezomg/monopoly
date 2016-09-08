@@ -122,7 +122,7 @@ int main(int argc, char const *argv[])
 					mvprintw(13,80,"Your option? -> ");
 					getstr(keyPlayer);
 					cleanScreen();
-					if(keyPlayer[0] == '1'){
+					if(keyPlayer[0] == '1'){//TIRAR EL DADO Y VALIDACIONES DE POSICION
 						dice1 = (1 + rand() % 6);
 						dice2 = (1 + rand() % 6);
 						int spaces = dice1 + dice2;
@@ -136,21 +136,19 @@ int main(int argc, char const *argv[])
 						int Espacio=Jugador1->getPosition()-1;
 						cleanScreen();
 						draw(Espacio+1);
-						if (Espacio==2)
+						if (Espacio==2||Espacio==7||Espacio==17||Espacio==22||Espacio==33||Espacio==36)
 						{
-							
-						}else if (Espacio==4)
-						{
-							
-						}else if (Espacio==4)
-						{
-							
-						}else if (Espacio==7)
-						{
-							
-						}else if (Espacio==10)
-						{
-							
+							mvprintw(4,100,board.at(Espacio)->toString().c_str());
+							//CARTAS DE COMMMUNITY CHEST Y FORTUNE						
+						}else if (Espacio==4||Espacio==3){
+							mvprintw(4,100,board.at(Espacio)->toString().c_str());
+							//TAXES
+						}else if (Espacio==30){
+							mvprintw(4,100,board.at(Espacio)->toString().c_str());
+							//GO TO JAIL
+						}else if (Espacio==20||Espacio==10){
+							mvprintw(4,100,board.at(Espacio)->toString().c_str());
+							//VISIT JAIL,FREE SPACE NO HACEN NADA SOLO ES EL DIBUJO
 						}else{
 							if (board.at(Espacio)->getOwned()==false)
 							{	
@@ -170,12 +168,17 @@ int main(int argc, char const *argv[])
 									Jugador1->setProperties(board.at(Espacio));
 									}
 								}						
-							}else{
-								//Cuando la propiedad ya este comprada
+							}else{//CUANDO ALGUIEN TIENE LA PROPIEDAD
+								if (Jugador1->validarProperties(board.at(Espacio)->getTitle()))
+								{
+									mvprintw(5,80,"Esta Propiedad es tuya");	
+								}else{//COBRARLE AL JUGADOR LA RENTA
+									Jugador1->setMoneyOwned(board.at(Espacio)->getRent());
+								}
 							}
 						}
 						echo();
-						mvprintw(4,100,board.at(Espacio)->toString().c_str());
+						//mvprintw(4,100,board.at(Espacio)->toString().c_str());
 						getch();
 						cleanScreen();
 
