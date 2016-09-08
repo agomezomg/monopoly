@@ -18,6 +18,7 @@ protected:
 public:
 	Properties(int,int,int,int,string,bool);
 	~Properties();
+	Properties();
 	int getPrice();
 	void setPrice(int);
 	int getRent();

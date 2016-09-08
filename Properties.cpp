@@ -7,21 +7,18 @@
 using std::string;
 using std::stringstream;
 
-<<<<<<< HEAD
+
 Properties::Properties(int rent,int sale,int mortgage,int price,string title,bool owned):rent(rent),sale(sale),mortgage(mortgage),
 price(price),title(title),owned(owned) {
 	
-=======
-Properties::Properties() {
-	this -> owned = false;
-	this -> mortgage = 0;
-	this -> color = "any";
->>>>>>> fe291fedcebb3e82270a94861e35902fc2d8bc6a
 }
 
+Properties::Properties(){
 
-Properties::~Properties() {
+}
 
+Properties::~Properties(){
+	
 }
 
 int Properties::getPrice() {
@@ -73,7 +70,7 @@ void Properties::setColor(string color) {
 }
 
 void Properties::setAll(int space) {
-<<<<<<< HEAD
+
 	/*if (space == 1) {
 	
 	} else if (space == 2) {
@@ -235,13 +232,13 @@ void Properties::setAll(int space) {
 		this -> price = 100;
 		this -> color = "Tax";
 	} else if (space == 39) {
-<<<<<<< HEAD
+
 		this -> title = "Mediterranean Avenue";
 		this -> price = 60;
 	} else {
 		this -> title = "Mediterranean Avenue";
 		this -> price = 60;
-	}*/
+	}
 =======
 		this -> title = "Boardwalk";
 		this -> price = 400;
@@ -251,7 +248,7 @@ void Properties::setAll(int space) {
 		this -> price = -200;
 		this -> color = "GO";
 	}
->>>>>>> fe291fedcebb3e82270a94861e35902fc2d8bc6a
+*/
 }
 
 string Properties::toString() { //pending
