@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <curses.h>
 #include <signal.h>
+#include <time.h>
 #include "Table.h"
 #include "Properties.h"
 #include "Player.h"
@@ -18,6 +19,7 @@ void draw(int);
 
 int main(int argc, char const *argv[])
 {
+	srand (time(NULL));
 	/*vector<Properties*> tablero;
 	for (int i = 0; i < 40; ++i)
 	{
@@ -129,6 +131,7 @@ int main(int argc, char const *argv[])
 						Jugador1 -> TurnControl(spaces);
 						init_pair(1, COLOR_BLACK, COLOR_WHITE);
 						attron(COLOR_PAIR(1));
+						srand (time(NULL));
 						drawDiceOne(dice1);
 						drawDiceTwo(dice2);
 						attroff(COLOR_PAIR(1));
@@ -186,7 +189,12 @@ int main(int argc, char const *argv[])
 					}else if(keyPlayer[0] == '3'){
 						//Observar la Informacion del jugador
 						mvprintw(15,80, Jugador1 -> toString().c_str());
+					}else if(keyPlayer[0] == '6'){
+						
+						endwin();
+						exit(0);
 					}
+
 					//cleanScreen();
 				}
 		} while (true);
