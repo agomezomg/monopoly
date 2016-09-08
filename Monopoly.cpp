@@ -187,7 +187,7 @@ int main(int argc, char const *argv[])
 						//Observar la Informacion del jugador
 						mvprintw(15,80, Jugador1 -> toString().c_str());
 					}
-													
+					//cleanScreen();
 				}
 		} while (true);
 	}
@@ -199,7 +199,7 @@ void boardPic(){
 void cleanScreen(){
 	for (int i = 0; i < 300; i++){
 		for (int j = 0; j <300; j++){
-			mvprintw(i,j,"   ");
+			mvprintw(i,j,"     .    ");
 		}
 	}
 }
@@ -1089,7 +1089,7 @@ if(option == 1){
 		mvprintw(30,20,"*                                        *\n");
 		mvprintw(31,20,"******************************************\n");
 		attroff(COLOR_PAIR(1));
-	}else if (option == 2 || option == 17 || option == 32){
+	}else if (option == 2 || option == 17 || option == 33){
 		init_pair(1,COLOR_BLUE,COLOR_WHITE);
 		attron(COLOR_PAIR(1));
 		mvprintw(10,20,"******************************************\n");
