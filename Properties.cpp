@@ -70,17 +70,14 @@ void Properties::setColor(string color) {
 }
 
 void Properties::setAll(int space) {
-
 	/*if (space == 1) {
 	
 	} else if (space == 2) {
-=======
 	if (space == 0) {
 		this -> title = "GO";
 		this -> price = -200;
 		this -> color = "GO";
 	} else if (space == 1) {
->>>>>>> fe291fedcebb3e82270a94861e35902fc2d8bc6a
 		this -> title = "Mediterranean Avenue";
 		this -> price = 60;
 		this -> color = "brown";
@@ -239,7 +236,6 @@ void Properties::setAll(int space) {
 		this -> title = "Mediterranean Avenue";
 		this -> price = 60;
 	}
-=======
 		this -> title = "Boardwalk";
 		this -> price = 400;
 		this -> color = "Blue";
