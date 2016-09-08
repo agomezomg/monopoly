@@ -114,10 +114,12 @@ int main(int argc, char const *argv[])
 					mvprintw(6,80,"1.-Throwing dice\n");
 					mvprintw(7,80,"2.-See your properties\n");
 					mvprintw(8,80,"3.-See your data\n");
-					mvprintw(9,80,"4.-Quit\n");
-					mvprintw(10,80,"5.-Save game\n");
-					//mvprintw(11,80,"6.-End of the game\n");
-					mvprintw(12,80,"Your option? -> ");
+					mvprintw(9,80,"4.-Sale Properties\n");
+					mvprintw(10,80,"5.-Build on complete avenues\n");
+					//QUE NO HAREMOS PROBABLEMENTE mvprintw(12,80,"6.-Trade\n");
+					mvprintw(11,80,"6.-Quit no QUICK \n");
+					mvprintw(12,80,"7.-Save Game for later \n");
+					mvprintw(13,80,"Your option? -> ");
 					getstr(keyPlayer);
 					cleanScreen();
 					if(keyPlayer[0] == '1'){
@@ -179,11 +181,11 @@ int main(int argc, char const *argv[])
 
 					}else if(keyPlayer[0] == '2'){
 						//Observar las propiedades
-						mvprintw(10,80,Jugador1->getProperties().c_str());
+						mvprintw(16,80,Jugador1->getProperties().c_str());
 
 					}else if(keyPlayer[0] == '3'){
 						//Observar la Informacion del jugador
-						mvprintw(11,80, Jugador1 -> toString().c_str());
+						mvprintw(15,80, Jugador1 -> toString().c_str());
 					}
 								
 				}
