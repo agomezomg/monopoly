@@ -16,7 +16,6 @@ protected:
 	string name;
 	bool inJail;
 	int moneyOwned;
-	int position;
 	bool getOutJail;
 	int spaces;
 public:
@@ -35,5 +34,7 @@ public:
 	void setCanGetOutJail();
 	string toString();
 	void TurnControl(int);
+	string getProperties();
+	void setProperties(Properties*);
 
 };

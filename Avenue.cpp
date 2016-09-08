@@ -10,7 +10,7 @@
 using std::string;
 using std::stringstream;
 
-Avenue::Avenue() {
+Avenue::Avenue(int rent,int sale,int mortgage,int price,string title,bool owned):Properties(rent,sale,mortgage,price,title,owned) {
 
 }
 
@@ -30,14 +30,14 @@ int Avenue::getHouses() {
 	return this -> houses;
 }
 
-void Avenue::setHouses() {
+void Avenue::setHouses(int houses) {
 	this -> houses = houses;
 }
 
 string Avenue::toString() {
 	stringstream ss;
-	ss << title;
-	return ss.str();
+	ss << this->title;
+    return ss.str();
 }
 
 void Avenue::drawItem(int space) {

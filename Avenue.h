@@ -12,15 +12,16 @@ private:
 	int houses;
 	int housePrice;
 public:
+	Avenue(int,int,int,int,string,bool);
 	Avenue();
 	~Avenue();
 	string getTitle();
 	void setTitle();
 	int getHouses();
-	void setHouses();
+	void setHouses(int);
 	int getHousePrice();
 	void setHousePrice();
 	void printCard(int space);
 	string toString();
-	void drawItem(int space);
+	virtual void drawItem(int space);
 };

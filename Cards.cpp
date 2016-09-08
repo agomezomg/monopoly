@@ -42,6 +42,7 @@ string Cards::getCardDescription() {
 	return this -> cardDescription;
 }
 
+
 string Cards::toString() { //PENDIENTE
 	stringstream ss;
 	ss << "Card";

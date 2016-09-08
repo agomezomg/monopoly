@@ -7,9 +7,11 @@
 using std::string;
 using std::stringstream;
 
-Properties::Properties() {
-	this -> owned = false;
+Properties::Properties(int rent,int sale,int mortgage,int price,string title,bool owned):rent(rent),sale(sale),mortgage(mortgage),
+price(price),title(title),owned(owned) {
+	
 }
+
 
 Properties::~Properties() {
 
@@ -64,7 +66,7 @@ void Properties::setColor(string color) {
 }
 
 void Properties::setAll(int space) {
-	if (space == 1) {
+	/*if (space == 1) {
 	
 	} else if (space == 2) {
 		this -> title = "Mediterranean Avenue";
@@ -187,7 +189,7 @@ void Properties::setAll(int space) {
 	} else {
 		this -> title = "Mediterranean Avenue";
 		this -> price = 60;
-	}
+	}*/
 }
 
 string Properties::toString() { //pending
@@ -205,5 +207,6 @@ int Properties::getDeduction() {
 }
 
 void Properties::drawItem(int space) {
-	//do nothing
+   //Nada de nadita
 }
+

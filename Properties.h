@@ -16,7 +16,7 @@ protected:
 	string color;
 	int deduction;
 public:
-	Properties();
+	Properties(int,int,int,int,string,bool);
 	~Properties();
 	int getPrice();
 	void setPrice(int);
@@ -35,4 +35,5 @@ public:
 	int getDeduction();
 	void setDeduction(int);
 	void drawItem(int space);
+	void buyPropety(int);
 };

@@ -1,5 +1,6 @@
 #include "Player.h"
-
+using namespace std;
+#include <iostream>
 Player::Player() {
 
 }
@@ -22,7 +23,7 @@ void Player::setName(string name) {
 }
 
 int Player::getPosition() {
-	return this -> position;
+	return this -> spaces;
 }
 
 void Player::TurnControl(int spaces){
@@ -32,11 +33,33 @@ void Player::TurnControl(int spaces){
 		this -> moneyOwned += 200;
 	} else {
 		this -> spaces += spaces;
+		
 	}
 }
 
 string Player::toString() {
 	stringstream ss;
 	ss << "Name: " << name << " you have $" << moneyOwned << " and you are in square: " << spaces;
+	return ss.str();
+}
+
+int Player::getMoneyOwned(){
+	return this->moneyOwned;
+}
+
+void Player::setMoneyOwned(int Price){
+	this->moneyOwned=this->moneyOwned-Price;
+}
+
+void Player::setProperties(Properties* Properties){
+	this->properties.push_back(Properties);
+}
+
+string Player::getProperties(){
+	stringstream ss;
+	for (int i = 0; i < properties.size(); ++i)
+		{
+			ss<<properties.at(i)->toString()<<"\n";
+		}	
 return ss.str();
 }
