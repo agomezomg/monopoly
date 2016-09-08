@@ -1,6 +1,7 @@
 #include "Player.h"
 using namespace std;
 #include <iostream>
+
 Player::Player() {
 
 }
@@ -11,11 +12,6 @@ Player::Player(string name, int moneyOwned) : name(name), moneyOwned(moneyOwned)
 	this -> moneyOwned = 2000;
 }
 
-Player::Player(string name) : name(name) {
-	this -> inJail = false;
-	this -> getOutJail = false;
-	this -> moneyOwned = 2000;
-}
 
 Player::~Player() {
 
