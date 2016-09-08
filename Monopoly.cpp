@@ -167,7 +167,7 @@ int main(int argc, char const *argv[])
 							}else{//CUANDO ALGUIEN TIENE LA PROPIEDAD
 								if (Jugador1->validarProperties(board.at(Espacio)->getTitle()))
 								{
-									mvprintw(5,80,"Esta Propiedad es tuya");	
+									mvprintw(8,80,"Esta Propiedad es tuya");	
 								}else{//COBRARLE AL JUGADOR LA RENTA
 									Jugador1->setMoneyOwned(board.at(Espacio)->getRent());
 								}
@@ -177,6 +177,7 @@ int main(int argc, char const *argv[])
 						//mvprintw(4,100,board.at(Espacio)->toString().c_str());
 						getch();
 						cleanScreen();
+						mvprintw(10,80,"5.-JUST A PROVING\n");
 
 					}else if(keyPlayer[0] == '2'){
 						//Observar las propiedades
@@ -186,7 +187,7 @@ int main(int argc, char const *argv[])
 						//Observar la Informacion del jugador
 						mvprintw(15,80, Jugador1 -> toString().c_str());
 					}
-								
+													
 				}
 		} while (true);
 	}
@@ -196,9 +197,9 @@ void boardPic(){
 	move(1,1);
 }
 void cleanScreen(){
-	for (int i = 0; i < LINES; i++){
-		for (int j = 0; j < COLS; j++){
-			mvprintw(i,j," ");
+	for (int i = 0; i < 300; i++){
+		for (int j = 0; j <300; j++){
+			mvprintw(i,j,"   ");
 		}
 	}
 }
@@ -1010,5 +1011,291 @@ if(option == 1){
 		mvprintw(29,20,"*                                      *\n");
 		mvprintw(30,20,"****************************************\n");
 		attroff(COLOR_PAIR(1));
- 	}
+ 	}else if (option == 4||option==38){
+		init_pair(1,COLOR_BLACK,COLOR_WHITE);
+		attron(COLOR_PAIR(1));
+		mvprintw(10,20,"******************************************\n");
+		mvprintw(11,20,"*                                        *\n");
+		mvprintw(12,20,"*                                        *\n");
+		mvprintw(13,20,"*    * *   *   ***   ***   *   * *****   *\n");
+		mvprintw(14,20,"*    * **  *  *     *   *  ** ** *       *\n");
+		mvprintw(15,20,"*    * * * * *     *     * * * * ***     *\n");
+		mvprintw(16,20,"*    * *  **  *     *   *  *   * *       *\n");
+		mvprintw(17,20,"*    * *   *   ***   ***   *   * *****   *\n");
+		mvprintw(18,20,"*                                        *\n");
+		mvprintw(19,20,"*           ***** ***** *   *            *\n");
+		mvprintw(20,20,"*             *   *   *  * *             *\n");
+		mvprintw(21,20,"*             *   *****   *              *\n");
+		mvprintw(22,20,"*             *   *   *  * *             *\n");
+		mvprintw(23,20,"*             *   *   * *   *            *\n");
+		mvprintw(24,20,"*                                        *\n");
+		mvprintw(25,20,"*                                        *\n");
+		mvprintw(26,20,"*                                        *\n");
+		mvprintw(27,20,"*                PAY $200                *\n");
+		mvprintw(28,20,"*                                        *\n");
+		mvprintw(29,20,"*                                        *\n");
+		mvprintw(30,20,"*                                        *\n");
+		mvprintw(31,20,"******************************************\n");
+		attroff(COLOR_PAIR(1));
+	}else if(option == 30){
+		init_pair(1,COLOR_BLACK,COLOR_RED);
+		attron(COLOR_PAIR(1));
+		mvprintw(10,20,"******************************************\n");
+		mvprintw(11,20,"*                                        *\n");
+		mvprintw(12,20,"*                                        *\n");
+		mvprintw(13,20,"*     ****** ******    ******* ******    *\n");
+		mvprintw(14,20,"*     *      *    *       *    *    *    *\n");
+		mvprintw(15,20,"*     *      *    *       *    *    *    *\n");
+		mvprintw(16,20,"*     *   ** *    *       *    *    *    *\n");
+		mvprintw(17,20,"*     *    * *    *       *    *    *    *\n");
+		mvprintw(18,20,"*     ****** ******       *    ******    *\n");
+		mvprintw(19,20,"*                                        *\n");
+		mvprintw(20,20,"*         *******  ******  *  *          *\n");
+		mvprintw(21,20,"*            *     *    *  *  *          *\n");
+		mvprintw(22,20,"*            *     *    *  *  *          *\n");
+		mvprintw(23,20,"*            *     ******  *  *          *\n");
+		mvprintw(24,20,"*            *     *    *  *  *          *\n");
+		mvprintw(25,20,"*         ****     *    *  *  *****      *\n");
+		mvprintw(26,20,"*           _____________________        *\n");
+		mvprintw(27,20,"*           |   |   |   |   |   |        *\n");
+		mvprintw(28,20,"*           |   |   |   |   |   |        *\n");
+		mvprintw(29,20,"*           |___|___|___|___|___|        *\n");
+		mvprintw(30,20,"*                                        *\n");
+		mvprintw(31,20,"******************************************\n");
+		attroff(COLOR_PAIR(1));
+	} else if(option == 10){
+		init_pair(1,COLOR_WHITE,COLOR_RED);
+		attron(COLOR_PAIR(1));
+		mvprintw(10,20,"******************************************\n");
+		mvprintw(11,20,"*        |                               *\n");
+		mvprintw(12,20,"*        |                               *\n");
+		mvprintw(13,20,"*        |                               *\n");
+		mvprintw(14,20,"*        |                               *\n");
+		mvprintw(15,20,"*        |                               *\n");
+		mvprintw(16,20,"*        |                               *\n");
+		mvprintw(17,20,"*        |                               *\n");
+		mvprintw(18,20,"*        |                               *\n");
+		mvprintw(19,20,"*        |                               *\n");
+		mvprintw(20,20,"*        |                               *\n");
+		mvprintw(21,20,"*        |                               *\n");
+		mvprintw(22,20,"*        |                               *\n");
+		mvprintw(23,20,"*        |                               *\n");
+		mvprintw(24,20,"*        |                               *\n");
+		mvprintw(25,20,"*        |                               *\n");
+		mvprintw(26,20,"*        |_____________________________  *\n");
+		mvprintw(27,20,"*                                        *\n");
+		mvprintw(28,20,"*                                        *\n");
+		mvprintw(29,20,"*                                        *\n");
+		mvprintw(30,20,"*                                        *\n");
+		mvprintw(31,20,"******************************************\n");
+		attroff(COLOR_PAIR(1));
+	}else if (option == 2 || option == 17 || option == 32){
+		init_pair(1,COLOR_BLUE,COLOR_WHITE);
+		attron(COLOR_PAIR(1));
+		mvprintw(10,20,"******************************************\n");
+		mvprintw(11,20,"*                                        *\n");
+		mvprintw(12,20,"*                                        *\n");
+		mvprintw(13,20,"*                                        *\n");
+		mvprintw(14,20,"*    ********************************    *\n");
+		mvprintw(15,20,"*    *            *   *             *    *\n");
+		mvprintw(16,20,"*    ********************************    *\n");
+		mvprintw(17,20,"*    *            *   *             *    *\n");
+		mvprintw(18,20,"*    *             ***              *    *\n");
+		mvprintw(19,20,"*    *                              *    *\n");
+		mvprintw(20,20,"*    *                              *    *\n");
+		mvprintw(21,20,"*    ********************************    *\n");
+		mvprintw(22,20,"*                                        *\n");
+		mvprintw(23,20,"*                                        *\n");
+		mvprintw(24,20,"*                                        *\n");
+		mvprintw(25,20,"*               COMMUNITY                *\n");
+		mvprintw(26,20,"*                 CHEST                  *\n");
+		mvprintw(27,20,"*                                        *\n");
+		mvprintw(28,20,"*                                        *\n");
+		mvprintw(29,20,"*                                        *\n");
+		mvprintw(30,20,"*                                        *\n");
+		mvprintw(31,20,"******************************************\n");
+		attroff(COLOR_PAIR(1));
+	}else if (option == 7 || option == 22 || option == 36){
+		init_pair(1,COLOR_BLUE,COLOR_WHITE);
+		attron(COLOR_PAIR(1));
+		mvprintw(10,20,"******************************************\n");
+		mvprintw(11,20,"*                                        *\n");
+		mvprintw(12,20,"*                ???????                 *\n");
+		mvprintw(13,20,"*               ??     ??                *\n");
+		mvprintw(14,20,"*              ??       ??               *\n");
+		mvprintw(15,20,"*               ??      ??               *\n");
+		mvprintw(16,20,"*                      ??                *\n");
+		mvprintw(17,20,"*                     ??                 *\n");
+		mvprintw(18,20,"*                  ????                  *\n");
+		mvprintw(19,20,"*                  ????                  *\n");
+		mvprintw(20,20,"*                  ????                  *\n");
+		mvprintw(21,20,"*                  ????                  *\n");
+		mvprintw(22,20,"*                  ????                  *\n");
+		mvprintw(23,20,"*                  ????                  *\n");
+		mvprintw(24,20,"*                  ????                  *\n");
+		mvprintw(25,20,"*                  ????                  *\n");
+		mvprintw(26,20,"*                                        *\n");
+		mvprintw(27,20,"*                   **                   *\n");
+		mvprintw(28,20,"*                  ****                  *\n");
+		mvprintw(29,20,"*                   **                   *\n");
+		mvprintw(30,20,"*                                        *\n");
+		mvprintw(31,20,"******************************************\n");
+		attroff(COLOR_PAIR(1));
+	}else if(option == 28){
+		init_pair(1,COLOR_BLACK,COLOR_WHITE);
+		attron(COLOR_PAIR(1));
+		mvprintw(10,20,"******************************************\n");
+		mvprintw(11,20,"*                <===*===>               *\n");
+		mvprintw(12,20,"*                    |                   *\n");
+		mvprintw(13,20,"*           *      *****                 *\n");
+		mvprintw(14,20,"*          * ***************             *\n");
+		mvprintw(15,20,"*          * *              *            *\n");
+		mvprintw(16,20,"*          * *               *           *\n");
+		mvprintw(17,20,"*          * ************     *          *\n");
+		mvprintw(18,20,"*           *            *    *          *\n");
+		mvprintw(19,20,"*                         *   *          *\n");
+		mvprintw(20,20,"*                         *   *          *\n");
+		mvprintw(21,20,"*                         *****          *\n");
+		mvprintw(22,20,"*   ----------------------------------   *\n");
+		mvprintw(23,20,"*                Water Works             *\n");
+		mvprintw(24,20,"*   ----------------------------------   *\n");
+		mvprintw(25,20,"*   If one Service is owned rent is 4    *\n");
+		mvprintw(26,20,"*   times amount shown on dice.          *\n");
+		mvprintw(27,20,"*   If both Services are owned rent is   *\n");
+		mvprintw(28,20,"*   10 times amount shown on dice.       *\n");
+		mvprintw(29,20,"*                                        *\n");
+		mvprintw(30,20,"*          Mortgage Value  $75           *\n");
+		mvprintw(31,20,"******************************************\n");
+		attroff(COLOR_PAIR(1));
+	} else if (option == 12){
+		init_pair(1,COLOR_BLACK,COLOR_WHITE);
+		attron(COLOR_PAIR(1));
+		mvprintw(10,20,"******************************************\n");
+		mvprintw(11,20,"*               ***********              *\n");
+		mvprintw(12,20,"*              *   *   *   *             *\n");
+		mvprintw(13,20,"*             *   * * * *   *            *\n");
+		mvprintw(14,20,"*             *   *  *  *   *            *\n");
+		mvprintw(15,20,"*             *    *_*_*    *            *\n");
+		mvprintw(16,20,"*              *    | |    *             *\n");
+		mvprintw(17,20,"*               *   | |   *              *\n");
+		mvprintw(18,20,"*                *  | |  *               *\n");
+		mvprintw(19,20,"*                 *******                *\n");
+		mvprintw(20,20,"*                 *-----*                *\n");
+		mvprintw(21,20,"*                 *******                *\n");
+		mvprintw(22,20,"*   ----------------------------------   *\n");
+		mvprintw(23,20,"*            Electronic Company          *\n");
+		mvprintw(24,20,"*   ----------------------------------   *\n");
+		mvprintw(25,20,"*   If one Service is owned rent is 4    *\n");
+		mvprintw(26,20,"*   times amount shown on dice.          *\n");
+		mvprintw(27,20,"*   If both Services are owned rent is   *\n");
+		mvprintw(28,20,"*   10 times amount shown on dice.       *\n");
+		mvprintw(29,20,"*                                        *\n");
+		mvprintw(30,20,"*          Mortgage Value  $75           *\n");
+		mvprintw(31,20,"******************************************\n");
+		attroff(COLOR_PAIR(1));
+	}else if(option == 5){
+		init_pair(1,COLOR_BLACK,COLOR_WHITE);
+		attron(COLOR_PAIR(1));
+		mvprintw(10,20,"******************************************\n");
+		mvprintw(11,20,"*                                        *\n");
+		mvprintw(12,20,"*               ***      ****            *\n");
+		mvprintw(13,20,"*               *        ***             *\n");
+		mvprintw(14,20,"*               *************            *\n");
+		mvprintw(15,20,"*              ***************           *\n");
+		mvprintw(16,20,"*               ***************          *\n");
+		mvprintw(17,20,"*                *  ***    ***           *\n");
+		mvprintw(18,20,"*               ** *****  *****          *\n");
+		mvprintw(19,20,"*              ***  ***    ***           *\n");
+		mvprintw(20,20,"*   ----------------------------------   *\n");
+		mvprintw(21,20,"*             B. & O. Railroad           *\n");
+		mvprintw(22,20,"*   ----------------------------------   *\n");
+		mvprintw(23,20,"*                                        *\n");
+		mvprintw(24,20,"*      Rent        ------>        $25    *\n");
+		mvprintw(25,20,"*      If 2 R.R.'s are owned -->  $50    *\n");
+		mvprintw(26,20,"*      If 3 R.R.'s are owned --> $100    *\n");
+		mvprintw(27,20,"*      If 4 R.R.'s are owned --> $150    *\n");
+		mvprintw(28,20,"*                                        *\n");
+		mvprintw(29,20,"*         Mortgage Value ---> $100       *\n");
+		mvprintw(30,20,"*                                        *\n");
+		mvprintw(31,20,"******************************************\n");
+		attroff(COLOR_PAIR(1));
+	} else if (option == 15){
+		init_pair(1,COLOR_BLACK,COLOR_WHITE);
+		attron(COLOR_PAIR(1));
+		mvprintw(10,20,"******************************************\n");
+		mvprintw(11,20,"*                                        *\n");
+		mvprintw(12,20,"*               ***      ****            *\n");
+		mvprintw(13,20,"*               *        ***             *\n");
+		mvprintw(14,20,"*               *************            *\n");
+		mvprintw(15,20,"*              ***************           *\n");
+		mvprintw(16,20,"*               ***************          *\n");
+		mvprintw(17,20,"*                *  ***    ***           *\n");
+		mvprintw(18,20,"*               ** *****  *****          *\n");
+		mvprintw(19,20,"*              ***  ***    ***           *\n");
+		mvprintw(20,20,"*   ----------------------------------   *\n");
+		mvprintw(21,20,"*             Short Line R. R.           *\n");
+		mvprintw(22,20,"*   ----------------------------------   *\n");
+		mvprintw(23,20,"*                                        *\n");
+		mvprintw(24,20,"*      Rent        ------>        $25    *\n");
+		mvprintw(25,20,"*      If 2 R.R.'s are owned -->  $50    *\n");
+		mvprintw(26,20,"*      If 3 R.R.'s are owned --> $100    *\n");
+		mvprintw(27,20,"*      If 4 R.R.'s are owned --> $150    *\n");
+		mvprintw(28,20,"*                                        *\n");
+		mvprintw(29,20,"*         Mortgage Value ---> $100       *\n");
+		mvprintw(30,20,"*                                        *\n");
+		mvprintw(31,20,"******************************************\n");
+		attroff(COLOR_PAIR(1));
+	} else if (option == 25){
+		init_pair(1,COLOR_BLACK,COLOR_WHITE);
+		attron(COLOR_PAIR(1));
+		mvprintw(10,20,"******************************************\n");
+		mvprintw(11,20,"*                                        *\n");
+		mvprintw(12,20,"*               ***      ****            *\n");
+		mvprintw(13,20,"*               *        ***             *\n");
+		mvprintw(14,20,"*               *************            *\n");
+		mvprintw(15,20,"*              ***************           *\n");
+		mvprintw(16,20,"*               ***************          *\n");
+		mvprintw(17,20,"*                *  ***    ***           *\n");
+		mvprintw(18,20,"*               ** *****  *****          *\n");
+		mvprintw(19,20,"*              ***  ***    ***           *\n");
+		mvprintw(20,20,"*   ----------------------------------   *\n");
+		mvprintw(21,20,"*             Reading Railroad           *\n");
+		mvprintw(22,20,"*   ----------------------------------   *\n");
+		mvprintw(23,20,"*                                        *\n");
+		mvprintw(24,20,"*      Rent        ------>        $25    *\n");
+		mvprintw(25,20,"*      If 2 R.R.'s are owned -->  $50    *\n");
+		mvprintw(26,20,"*      If 3 R.R.'s are owned --> $100    *\n");
+		mvprintw(27,20,"*      If 4 R.R.'s are owned --> $150    *\n");
+		mvprintw(28,20,"*                                        *\n");
+		mvprintw(29,20,"*         Mortgage Value ---> $100       *\n");
+		mvprintw(30,20,"*                                        *\n");
+		mvprintw(31,20,"******************************************\n");
+		attroff(COLOR_PAIR(1));
+	} else if (option == 35){
+		init_pair(1,COLOR_BLACK,COLOR_WHITE);
+		attron(COLOR_PAIR(1));
+		mvprintw(10,20,"******************************************\n");
+		mvprintw(11,20,"*                                        *\n");
+		mvprintw(12,20,"*               ***      ****            *\n");
+		mvprintw(13,20,"*               *        ***             *\n");
+		mvprintw(14,20,"*               *************            *\n");
+		mvprintw(15,20,"*              ***************           *\n");
+		mvprintw(16,20,"*               ***************          *\n");
+		mvprintw(17,20,"*                *  ***    ***           *\n");
+		mvprintw(18,20,"*               ** *****  *****          *\n");
+		mvprintw(19,20,"*              ***  ***    ***           *\n");
+		mvprintw(20,20,"*   ----------------------------------   *\n");
+		mvprintw(21,20,"*            Pennsylvania R. R.          *\n");
+		mvprintw(22,20,"*   ----------------------------------   *\n");
+		mvprintw(23,20,"*                                        *\n");
+		mvprintw(24,20,"*      Rent        ------>        $25    *\n");
+		mvprintw(25,20,"*      If 2 R.R.'s are owned -->  $50    *\n");
+		mvprintw(26,20,"*      If 3 R.R.'s are owned --> $100    *\n");
+		mvprintw(27,20,"*      If 4 R.R.'s are owned --> $150    *\n");
+		mvprintw(28,20,"*                                        *\n");
+		mvprintw(29,20,"*         Mortgage Value ---> $100       *\n");
+		mvprintw(30,20,"*                                        *\n");
+		mvprintw(31,20,"******************************************\n");
+		attroff(COLOR_PAIR(1));
+	}
 }
