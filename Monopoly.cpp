@@ -16,6 +16,7 @@ void cleanScreen();
 void drawDiceOne(int);
 void drawDiceTwo(int);
 void draw(int);
+int drawCard();
 
 int main(int argc, char const *argv[])
 {
@@ -627,7 +628,101 @@ void draw(int space){
 	    }    
     	attroff(COLOR_PAIR(2));    
     }
+}
 
-	
-	
+int drawCard(int space){ //Recibe la posicion en el vector, si valor<40 el valor retornado será la nueva posicion,
+						 //Si valor es mayor a 50 se trata de dinero sumado o restado
+	int randCard = rand() % 15;
+	int valor = 0;
+	string linea[8];
+    linea[0] = "**************************\n";
+    linea[2] = "*                        *\n";
+    linea[6] = "*                        *\n";
+    linea[7] = "************************** \n";
+   	init_color(COLOR_RED, 230, 95, 0);
+    init_pair(1,COLOR_BLACK,COLOR_RED);
+    if (randCard == 1){
+    	linea[3] = "*                        *\n";
+    	linea[4] = "*    You Inherit $100    *\n";
+    	linea[5] = "*                        *\n";
+    	valor = 100;
+    }else if (randCard == 2){
+    	linea[3] = "*  You have won second   *\n";
+    	linea[4] = "*   price in a beauty    *\n";
+    	linea[5] = "*   contest collet $50   *\n";
+    	valor = 50;
+    }else if (randCard == 3){
+    	linea[3] = "*      Bank error        *\n";
+    	linea[4] = "*     in your favor      *\n";
+    	linea[5] = "*      collet $200       *\n";
+    	valor = 200;
+    } else if (randCard == 4){
+    	linea[3] = "*        Receive         *\n";
+    	linea[4] = "*     for services       *\n";
+    	linea[5] = "*          $45           *\n";
+    	valor = 45;
+    }else if (randCard == 5){
+    	linea[3] = "*         Life           *\n";
+    	linea[4] = "*    insurance mature    *\n";
+    	linea[5] = "*      collect $100      *\n";
+    	valor = 100;
+    }else if (randCard == 6){
+    	linea[3] = "*     Bank pays you      *\n";
+    	linea[4] = "*      dividends of      *\n";
+    	linea[5] = "*          $50           *\n";
+    	valor = 50;
+    }else if (randCard == 7){
+    	linea[3] = "*           Pay          *\n";
+    	linea[4] = "*        poor tax        *\n";
+    	linea[5] = "*         of $50         *\n";
+    	valor = -50;
+    }else if (randCard == 8){
+    	linea[3] = "*           Pay          *\n";
+    	linea[4] = "*         Hospital       *\n";
+    	linea[5] = "*           $100         *\n";
+    	valor = -100;
+    }else if (randCard == 9){
+    	linea[3] = "*           Pay          *\n";
+    	linea[4] = "*      for services      *\n";
+    	linea[5] = "*           $50          *\n";
+    	valor = -50;
+    }else if (randCard == 10){
+    	linea[3] = "*        GO TO JAIL      *\n";
+    	linea[4] = "*    do not pass GO      *\n";
+    	linea[5] = "*  do not collect $200   *\n";
+    	valor = 10;
+    }else if (randCard == 11){
+    	linea[3] = "*           GO           *\n";
+    	linea[4] = "*          BACK          *\n";
+    	linea[5] = "*        3 spaces        *\n";
+    	valor = space - 3;
+    }else if (randCard == 12){
+    	linea[3] = "*       Advance to       *\n";
+    	linea[4] = "*          GO            *\n";
+    	linea[5] = "*      Collect $200      *\n";
+    	valor = 1;
+    }else if (randCard == 13){
+    	linea[3] = "*           GO           *\n";
+    	linea[4] = "*          BACK          *\n";
+    	linea[5] = "*        5 spaces        *\n";
+    	valor = space - 5;
+    }
+    else if (randCard == 14){
+    	linea[3] = "*       Advance to       *\n";
+    	linea[4] = "*        Illinois        *\n";
+    	linea[5] = "*         Avenue         *\n";
+    	valor = 24;
+    }else if (randCard == 15){
+    	linea[3] = "*        Go take        *\n";
+    	linea[4] = "*       a walk to       *\n";
+    	linea[5] = "*       Boardwalk       *\n";
+    	valor = 39;
+    }
+    attron(COLOR_PAIR(1));
+    for (int i = 0; i < 8; i++)
+    {
+    	mvprintw(i+10,20,linea[i].c_str());
+	}    
+   	attroff(COLOR_PAIR(2));
+   	return valor;
 }
