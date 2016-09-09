@@ -135,19 +135,22 @@ int main(int argc, char const *argv[])
 						getch();
 						int Espacio=Jugador1->getPosition()-1;
 						cleanScreen();
-						draw(Espacio+1);
+						Espacio++;
+						draw(Espacio);
 						if (Espacio==2||Espacio==7||Espacio==17||Espacio==22||Espacio==33||Espacio==36)
 						{
 							//CARTAS DE COMMMUNITY CHEST Y FORTUNE						
-						}else if (Espacio==4||Espacio==3){
+						}else if (Espacio==4||Espacio==38){
 							//TAXES
 						}else if (Espacio==30){
 							//GO TO JAIL
 						}else if (Espacio==20||Espacio==10){
 							//VISIT JAIL,FREE SPACE NO HACEN NADA SOLO ES EL DIBUJO
-						}else{
+						}else if(Espacio!=2&&Espacio!=7&&Espacio!=17&&Espacio!=22&&Espacio!=33&&Espacio!=36&&Espacio!=10&&Espacio!=38
+							&&Espacio!=4&&Espacio!=20&&Espacio!=30){
 							if (board.at(Espacio)->getOwned()==false)
 							{	
+								Espacio--;
 								if (Jugador1->getMoneyOwned()<board.at(Espacio)->getPrice())
 								{
 									//HEY JUANA NO PUEDES COMPRAR ESTA PROPIEDAD NO TIENES LAS VARAS
