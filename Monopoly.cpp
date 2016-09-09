@@ -507,10 +507,7 @@ void draw(int space){
     	linea[9] = "*  4 houses---> $1700 *\n";
     	linea[10] = "*  hotel------> $2000 *\n";
     	linea[12] = "* Mortgage Value $200 *\n";
-    }
-    
-    if (space == 5 || space == 15 || space == 25 || space == 35)
-    {
+    }else if (space == 5 || space == 15 || space == 25 || space == 35){
     	controlador = 1;
     	if(space == 5){
 			linea[1] = "*   Reading Railroad       *";
@@ -520,7 +517,6 @@ void draw(int space){
 			linea[1] = "*    B. & O. Railroad      *";
 		else if(space == 35)
 			linea[1] = "*     Short Line R. R.     *";
-	
 		init_pair(1,COLOR_BLACK,COLOR_WHITE);
 		attron(COLOR_PAIR(1));
 		mvprintw(10,20,"****************************\n");
@@ -539,9 +535,7 @@ void draw(int space){
 		mvprintw(23,20,"* Mortgage Value ---> $100 *\n");
 		mvprintw(24,20,"****************************\n");		
 		attroff(COLOR_PAIR(1));
-    }
-
-    if (space == 2 || space == 17 || space == 33){
+    }else if (space == 2 || space == 17 || space == 33){
     	controlador = 1;
 		init_pair(1,COLOR_BLUE,COLOR_WHITE);
 		attron(COLOR_PAIR(1));
@@ -566,18 +560,18 @@ void draw(int space){
 		attron(COLOR_PAIR(1));
 		mvprintw(10,20,"****************************\n");
 		mvprintw(11,20,"*                          *\n");
-		mvprintw(12,20,"*          ?????           *\n");
-		mvprintw(13,20,"*         ?     ?          *\n");
-		mvprintw(14,20,"*        ?      ?          *\n");
-		mvprintw(15,20,"*         ?     ?          *\n");
-		mvprintw(16,20,"*              ?           *\n");
-		mvprintw(17,20,"*             ?            *\n");
-		mvprintw(18,20,"*            ?             *\n");
+		mvprintw(12,20,"*          ??????          *\n");
+		mvprintw(13,20,"*         ?      ?         *\n");
+		mvprintw(14,20,"*        ?       ?         *\n");
+		mvprintw(15,20,"*         ?      ?         *\n");
+		mvprintw(16,20,"*               ?          *\n");
+		mvprintw(17,20,"*              ?           *\n");
+		mvprintw(18,20,"*             ?            *\n");
 		mvprintw(19,20,"*            ?             *\n");
-		mvprintw(21,20,"*            ?             *\n");
-		mvprintw(28,20,"*            *             *\n");
-		mvprintw(29,20,"*                          *\n");
-		mvprintw(31,20,"****************************\n");
+		mvprintw(20,20,"*            ?             *\n");
+		mvprintw(21,20,"*                          *\n");
+		mvprintw(22,20,"*            *             *\n");
+		mvprintw(23,20,"****************************\n");
 		attroff(COLOR_PAIR(1));
 	}else if(space == 28){
 		controlador = 1;
@@ -600,6 +594,7 @@ void draw(int space){
 		mvprintw(24,20,"****************************\n");
 		attroff(COLOR_PAIR(1));
 	} else if (space == 12){
+		controlador = 1;
 		init_pair(1,COLOR_BLACK,COLOR_WHITE);
 		attron(COLOR_PAIR(1));
 		mvprintw(10,20,"****************************\n");
@@ -619,7 +614,6 @@ void draw(int space){
 		mvprintw(24,20,"****************************\n");
 		attroff(COLOR_PAIR(1));
 	}
-
     if (controlador == 0)
     {
     	attron(COLOR_PAIR(1));
