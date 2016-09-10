@@ -90,7 +90,15 @@ int main(int argc, char const *argv[])
 		{	
 			if(Jugador1->checkInJail())	//SI EL JUGADOR ESTA EN LA CARCEL
 			{	
-
+				mvprintw(4,80, "Player ","You are in jail you need to");
+				mvprintw(5,80, "get out to throw the dice again");
+				Jugador1->setInJail(ifJail());
+				if(Jugador1->checkInJail()){
+					
+				}else{
+					Jugador1->setMoneyOwned(50);
+				}
+				cleanScreen();
 			}else{
 				int ControlTurno=0,dice1=0,dice2=0;
 				char keyPlayer[1];
@@ -130,7 +138,7 @@ int main(int argc, char const *argv[])
 						{	
 							int TemporalCarta=0;
 							TemporalCarta=drawCard();
-							if(TemporalCarta*-1<40&&TemporalCarta!=10){
+							if(TemporalCarta<40&&TemporalCarta!=10&&TemporalCarta>-6){
 								Jugador1->TurnControl(TemporalCarta);	
 							}else if(TemporalCarta!=10){
 								Jugador1->setMoney_Owned(TemporalCarta);
@@ -174,7 +182,7 @@ int main(int argc, char const *argv[])
 									}
 								}						
 							}else{//CUANDO ALGUIEN TIENE LA PROPIEDAD
-								if (Jugador1->validarProperties(board.at(Espacio-1)->getTitle()))
+								if (Jugador1->validarProperties(board.at(Espacio)->getTitle()))
 								{	
 									mvprintw(9,80,board.at(Espacio)->getTitle().c_str());
 									mvprintw(8,80,"Esta Propiedad es tuya");	
@@ -195,7 +203,7 @@ int main(int argc, char const *argv[])
 						//Observar la Informacion del jugador
 						mvprintw(15,80, Jugador1 -> toString().c_str());
 					}else if(keyPlayer[0] == '4'){//Vender Propiedades
-					
+						
 					}else if (keyPlayer[0] == '5')//Construir Casas
 					{
 							
@@ -738,5 +746,37 @@ int drawCard(){ //Recibe la posicion en el vector, si valor<40 el valor retornad
 }
 
 bool ifJail(){
-	return true;
+
+	int D1 = rand() % 6;
+	int D2 = rand() % 6;
+	D1++;
+	D2++;
+	srand (time(NULL));
+	echo();
+	char keyPlayer[1];
+	mvprintw(6,80, "1- Pay 50$ to get out");
+	//mvprintw(7,80, "2- Try to get pairs on the dice to get free");
+	mvprintw(9,80, "2- Try to get pairs on the dice to get free");
+	mvprintw(10,80, "-->");
+	getstr(keyPlayer);
+	//getch();
+	do{
+		if(keyPlayer[0] =='1'){
+			mvprintw(12,80, "You pay 50$");
+			return false;			
+		}else if(keyPlayer[0] =='2'){
+			drawDiceOne(D1);
+			drawDiceTwo(D2);
+			getch();
+			mvprintw(12,80, "Dices");
+			if(D1==D2){
+				mvprintw(12,80, "Dices are in your favor!");				
+				return false;
+			}else{
+				mvprintw(12,80, "Dices are not in yout favor stay in jail");
+				return true;
+			}
+		}
+	}while(keyPlayer[0]!=1&&keyPlayer[0]!=2);
+		
 }
