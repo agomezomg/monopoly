@@ -17,29 +17,10 @@ void drawDiceOne(int);
 void drawDiceTwo(int);
 void draw(int);
 int drawCard();
+bool ifJail();
 
 int main(int argc, char const *argv[])
 {
-	srand (time(NULL));
-	/*vector<Properties*> tablero;
-	for (int i = 0; i < 40; ++i)
-	{
-		Properties* p;
-		p = new Properties();
-		p -> setAll(i);
-		tablero.push_back(p);
-	}
-
-	for (int i = 0; i < tablero.size(); ++i)
-	{
-		if (i % 5 != 0)
-		{
-			Properties* temp = tablero.at(i);
-			temp = dynamic_cast<Avenue*>(tablero.at(i));
-			tablero.at(i) = temp;
-		}
-	}
-	*/
 	initscr();
 	start_color();
 	echo();
@@ -105,8 +86,12 @@ int main(int argc, char const *argv[])
 		//Falta La Inicializacion de las fichas 
 			Player* Jugador1=new Player("Juana",2000);
 			Player* Jugador2=new Player("Juanito",2000);
-			do
-			{
+		do
+		{	
+			if(Jugador1->checkInJail())	//SI EL JUGADOR ESTA EN LA CARCEL
+			{	
+
+			}else{
 				int ControlTurno=0,dice1=0,dice2=0;
 				char keyPlayer[1];
 				if (ControlTurno%2==0)
@@ -142,23 +127,40 @@ int main(int argc, char const *argv[])
 						Espacio++;
 						draw(Espacio);
 						if (Espacio==2||Espacio==7||Espacio==17||Espacio==22||Espacio==33||Espacio==36)
-						{
+						{	
+							int TemporalCarta=0;
+							TemporalCarta=drawCard();
+							if(TemporalCarta*-1<40&&TemporalCarta!=10){
+								Jugador1->TurnControl(TemporalCarta);	
+							}else if(TemporalCarta!=10){
+								Jugador1->setMoney_Owned(TemporalCarta);
+							}else{
+								Jugador1->setPosition(10);
+								Jugador1->setInJail(true);
+							}
 							//CARTAS DE COMMMUNITY CHEST Y FORTUNE						
 						}else if (Espacio==4||Espacio==38){
+							mvprintw(6,80,"Gracias por pagar tus impuestos de 200$!");
+							Jugador1->setMoneyOwned(200);
 							//TAXES
 						}else if (Espacio==30){
+							mvprintw(6,80,"Por ser muy Brayan ve directamente a la carcel!");
+							Jugador1->TurnControl(-20);
+							Jugador1->setInJail(true);
 							//GO TO JAIL
 						}else if (Espacio==20||Espacio==10){
+							mvprintw(6,80,"Esta Casilla no hace absolutamente nada!");
 							//VISIT JAIL,FREE SPACE NO HACEN NADA SOLO ES EL DIBUJO
 						}else if(Espacio!=2&&Espacio!=7&&Espacio!=17&&Espacio!=22&&Espacio!=33&&Espacio!=36&&Espacio!=10&&Espacio!=38
 							&&Espacio!=4&&Espacio!=20&&Espacio!=30){
+							Espacio--;
 							if (board.at(Espacio)->getOwned()==false)
 							{	
-								Espacio--;
+								
 								if (Jugador1->getMoneyOwned()<board.at(Espacio)->getPrice())
 								{
-									//HEY JUANA NO PUEDES COMPRAR ESTA PROPIEDAD NO TIENES LAS VARAS
-								}else{
+									mvprintw(6,60,"You do not have money to buy this property\n");
+						  		}else{
 									char keyPlayer[1];
 									mvprintw(6,80,"1.-Buy this Property\n");
 									mvprintw(7,80,"2.-NO\n");
@@ -172,38 +174,43 @@ int main(int argc, char const *argv[])
 									}
 								}						
 							}else{//CUANDO ALGUIEN TIENE LA PROPIEDAD
-								if (Jugador1->validarProperties(board.at(Espacio)->getTitle()))
-								{
+								if (Jugador1->validarProperties(board.at(Espacio-1)->getTitle()))
+								{	
+									mvprintw(9,80,board.at(Espacio)->getTitle().c_str());
 									mvprintw(8,80,"Esta Propiedad es tuya");	
 								}else{//COBRARLE AL JUGADOR LA RENTA
+									mvprintw(8,80,"Pagas la renta ya que esta propiedad no es");
+									mvprintw(9,80,board.at(Espacio)->getTitle().c_str());
 									Jugador1->setMoneyOwned(board.at(Espacio)->getRent());
 								}
 							}
 						}
 						echo();
-						//mvprintw(4,100,board.at(Espacio)->toString().c_str());
 						getch();
 						cleanScreen();
-						mvprintw(10,80,"5.-JUST A PROVING\n");
-
 					}else if(keyPlayer[0] == '2'){
 						//Observar las propiedades
 						mvprintw(16,80,Jugador1->getProperties().c_str());
-
 					}else if(keyPlayer[0] == '3'){
 						//Observar la Informacion del jugador
 						mvprintw(15,80, Jugador1 -> toString().c_str());
-					}else if(keyPlayer[0] == '6'){
-						
+					}else if(keyPlayer[0] == '4'){//Vender Propiedades
+					
+					}else if (keyPlayer[0] == '5')//Construir Casas
+					{
+							
+					}else if(keyPlayer[0] == '6'){//Abandonar el juego
 						endwin();
 						exit(0);
-					}
+					}else if(keyPlayer[0] == '7'){//Salvar el juego
 
-					//cleanScreen();
+					}
 				}
-		} while (true);
+			}
+		}while (true);
 	}
 }
+
 
 void boardPic(){
 	move(1,1);
@@ -539,8 +546,8 @@ void draw(int space){
 		mvprintw(23,20,"* Mortgage Value ---> $100 *\n");
 		mvprintw(24,20,"****************************\n");		
 		attroff(COLOR_PAIR(1));
-    }else if (space == 2 || space == 17 || space == 33){
-    	controlador = 1;
+    /*}else if (space == 2 || space == 17 || space == 33){
+    	/*controlador = 1;
 		init_pair(1,COLOR_BLUE,COLOR_WHITE);
 		attron(COLOR_PAIR(1));
 		mvprintw(10,20,"****************************\n");
@@ -576,7 +583,7 @@ void draw(int space){
 		mvprintw(21,20,"*                          *\n");
 		mvprintw(22,20,"*            *             *\n");
 		mvprintw(23,20,"****************************\n");
-		attroff(COLOR_PAIR(1));
+		attroff(COLOR_PAIR(1));*/
 	}else if(space == 28){
 		controlador = 1;
 		init_pair(1,COLOR_BLACK,COLOR_WHITE);
@@ -633,7 +640,7 @@ void draw(int space){
     }
 }
 
-int drawCard(int space){ //Recibe la posicion en el vector, si valor<40 el valor retornado será la nueva posicion,
+int drawCard(){ //Recibe la posicion en el vector, si valor<40 el valor retornado será la nueva posicion,
 						 //Si valor es mayor a 50 se trata de dinero sumado o restado
 	int randCard = rand() % 15;
 	int valor = 0;
@@ -698,28 +705,28 @@ int drawCard(int space){ //Recibe la posicion en el vector, si valor<40 el valor
     	linea[3] = "*           GO           *\n";
     	linea[4] = "*          BACK          *\n";
     	linea[5] = "*        3 spaces        *\n";
-    	valor = space - 3;
+    	valor = -3;
     }else if (randCard == 12){
-    	linea[3] = "*       Advance to       *\n";
-    	linea[4] = "*          GO            *\n";
-    	linea[5] = "*      Collect $200      *\n";
-    	valor = 1;
+    	linea[3] = "*       Pay 150 for      *\n";
+    	linea[4] = "*          for bad       *\n";
+    	linea[5] = "*      	  president      *\n";
+    	valor = -150;
     }else if (randCard == 13){
     	linea[3] = "*           GO           *\n";
     	linea[4] = "*          BACK          *\n";
     	linea[5] = "*        5 spaces        *\n";
-    	valor = space - 5;
+    	valor = -5;
     }
-    else if (randCard == 14){
+    else if (randCard == 18){
     	linea[3] = "*       Advance to       *\n";
     	linea[4] = "*        Illinois        *\n";
     	linea[5] = "*         Avenue         *\n";
     	valor = 24;
     }else if (randCard == 15){
     	linea[3] = "*        Go take        *\n";
-    	linea[4] = "*       a walk to       *\n";
-    	linea[5] = "*       Boardwalk       *\n";
-    	valor = 39;
+    	linea[4] = "*       a walk advance  *\n";
+    	linea[5] = "*       3 spaces        *\n";
+    	valor = 3;
     }
     attron(COLOR_PAIR(1));
     for (int i = 0; i < 8; i++)
@@ -728,4 +735,8 @@ int drawCard(int space){ //Recibe la posicion en el vector, si valor<40 el valor
 	}    
    	attroff(COLOR_PAIR(2));
    	return valor;
+}
+
+bool ifJail(){
+	return true;
 }

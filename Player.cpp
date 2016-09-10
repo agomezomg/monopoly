@@ -78,7 +78,20 @@ bool Player::validarProperties(string Nombre){
 		{
 			return true;
 		}
-	return false;
+	
 	}
+	return false;
+}
+
+void Player::setInJail(bool inJail){
+	this->inJail=inJail;
+}
+
+bool Player::checkInJail(){
+	return this->inJail;
+}
+
+void Player::setPosition(int NewPosition){
+	this->spaces=NewPosition;
 }
 
