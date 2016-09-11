@@ -117,22 +117,50 @@ bool Player::canBuildOnLot(int position) {
 			lightBlue++;
 		} else if ((toCheck == "Pink") && (properties.at(i) -> getColor() == toCheck))
 		{
-			lightBlue++;
+			pink++;
 		} else if ((toCheck == "Orange") && (properties.at(i) -> getColor() == toCheck))
 		{
-			lightBlue++;
+			orange++;
 		} else if ((toCheck == "Red") && (properties.at(i) -> getColor() == toCheck))
 		{
-			lightBlue++;
+			red++;
 		} else if ((toCheck == "Yellow") && (properties.at(i) -> getColor() == toCheck))
 		{
-			lightBlue++;
+			yellow++;
 		} else if ((toCheck == "Green") && (properties.at(i) -> getColor() == toCheck))
 		{
-			lightBlue++;
+			green++;
 		} else if ((toCheck == "Dark Blue") && (properties.at(i) -> getColor() == toCheck))
 		{
-			lightBlue++;
+			darkBlue++;
 		}
 	}
+
+	if (brown == 2)
+	{
+		return true;
+	} else if (lightBlue == 3)
+	{
+		return true;
+	} else if (pink == 3)
+	{
+		return true;
+	} else if (orange == 3)
+	{
+		return true;
+	} else if (red == 3)
+	{
+		return true;
+	} else if (yellow == 3)
+	{
+		return true;
+	} else if (green == 3)
+	{
+		return true;
+	} else if (darkBlue == 2)
+	{
+		return true;
+	}
+	
+	return false;
 }
