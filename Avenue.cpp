@@ -11,6 +11,7 @@ using std::string;
 using std::stringstream;
 
 Avenue::Avenue(int rent, int sale, int mortgage, int price, string title, bool owned) : Properties(rent, sale, mortgage, price, title, owned) {
+    this -> mortgage = 0;
     if (title == "Mediterranean Avenue")
     {
         this -> mortgage = 0;
@@ -151,14 +152,14 @@ Avenue::Avenue(int rent, int sale, int mortgage, int price, string title, bool o
         this -> color = "Green";
         this -> houses = 0;
         this -> housePrice = 100;
-    }else if (title == "Park PLace")
+    } else if (title == "Park PLace")
     {
         this -> mortgage = 0;
         this -> ID = 37;
         this -> color = "Dark Blue";
         this -> houses = 0;
         this -> housePrice = 100;
-    }  else if (title == "Boardwalk")
+    } else if (title == "Boardwalk")
     {
         this -> mortgage = 0;
         this -> ID = 39;
@@ -187,7 +188,13 @@ int Avenue::getHouses() {
 }
 
 void Avenue::setHouses(int houses) {
-	this -> houses = houses;
+    if (houses == 5)
+    {
+        this -> hotels = 1;
+    } else if (houses <= 4)
+    {
+        this -> houses = houses;
+    }
 }
 
 int Avenue::getHousePrice() {
@@ -438,6 +445,6 @@ int Avenue::getHotels() {
     return this -> hotels;
 }
 
-void Avenue::buildHotels(int hotels) {
-    this -> hotels += hotels;
+void Avenue::setHotels(int hotels) {
+    this -> hotels = hotels;
 }

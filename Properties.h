@@ -32,6 +32,7 @@ public:
 	void setOwned(bool);
 	int getMortgage();
 	void setMortgage(int);
+	void setMortgage(Properties*);
 	string getColor();
 	void setColor(string);
 	void setAll(int);

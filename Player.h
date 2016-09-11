@@ -45,5 +45,6 @@ public:
 	void sellProperty(int);
 	Player* removeProperty(Player*, Properties*);
 	Properties* mortgageProperty(Properties*);
-	Properties* payMortgage(int, Properties*);
+	void payMortgage(Properties*, int);
+	Properties* buildOnLot(Properties*);
 };

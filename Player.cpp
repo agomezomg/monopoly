@@ -291,11 +291,12 @@ Properties* Player::mortgageProperty(Properties* ugh) {
     }
 
     this -> moneyOwned += ugh -> getMortgage();
+    ugh -> setRent(0);
 
     return ugh;
 }
 
-Properties* Player::payMortgage(int payM, Properties* mortgagedP) {
+void Player::payMortgage(Properties* mortgagedP, int mortgageDue) {
 	for (int i = 0; i < properties.size(); ++i)
 	{
 		if (mortgagedP -> getTitle() == properties.at(i) -> getTitle())
@@ -304,5 +305,6 @@ Properties* Player::payMortgage(int payM, Properties* mortgagedP) {
 		}
 	}
 
-	this -> moneyOwned = ((mortgagedP -> getMortgage()) * 0.1) + mortgagedP -> getMortgage();
+	this -> moneyOwned = moneyOwned - mortgageDue;
+	mortgagedP -> setMortgage(0);
 }

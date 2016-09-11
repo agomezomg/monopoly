@@ -34,6 +34,7 @@ int main(int argc, char const *argv[1])
 {
 	initscr();
 	start_color();
+	//use_default_colors();
 	drawBoard();
 	echo();
 	char key[1];
@@ -105,18 +106,18 @@ int main(int argc, char const *argv[1])
 				board.push_back(new Avenue(50,400,250,400,"Muelle-Avenue",false));
 				board.push_back(new Avenue(2,60,30,60,"GO",false));
 				//Falta La Inicializacion de las fichas 
-				Jugador1=new Player("Juana",2000);
-				Jugador2=new Player("Juanito",2000);
+				Jugador1=new Player("Juana",1500);
+				Jugador2=new Player("Juanito",1500);
 				mvprintw(18,80, "New game");
 				initscr();
 				start_color();
 				drawBoard();
-			}		
-			do
-			{
-			initscr();
-	start_color();
-	drawBoard();
+			}
+
+			do {
+				initscr();
+				start_color();
+				drawBoard();
 				if(Jugador1 -> checkInJail())	//SI EL JUGADOR ESTA EN LA CARCEL
 				{	
 					mvprintw(4,10, "Player ","You are in jail you must ");
@@ -139,7 +140,7 @@ int main(int argc, char const *argv[1])
 						mvprintw(6,110,"1. Throwing dice\n");
 						mvprintw(7,110,"2. See your properties\n");
 						mvprintw(8,110,"3. See your data\n");
-						mvprintw(9,110,"4. Sell properties\n");
+						mvprintw(9,110,"4. Sales/Mortgages\n");
 						mvprintw(10,110,"5. Build on complete avenues\n");
 						//QUE NO HAREMOS PROBABLEMENTE mvprintw(12,80,"6.-Trade\n");
 						mvprintw(11,110,"6.-Quit no QUICK \n");
@@ -246,8 +247,9 @@ int main(int argc, char const *argv[1])
 									{
 									
 										char toWhom[1];
-										mvprintw(11,80,"1. Vender \n");
-										mvprintw(12,80,"2. Hipotecar \n");
+										mvprintw(11, 80, "1. Sell Property to Player 2 \n");
+										mvprintw(12, 80, "2. Mortgage this property. \n");
+										mvprintw(13, 80, "3. Pay back your mortgage.");
 										getstr(toWhom);
 										if (toWhom[0] == '1')
 										{
@@ -255,48 +257,73 @@ int main(int argc, char const *argv[1])
 											Jugador1 -> setMoney_Owned((tryTemp -> getPrice()));
 											Jugador2 -> setMoneyOwned(board.at(Espacio) -> getPrice());
 											Jugador2 -> setProperties(board.at(Espacio));
-											mvprintw(14,80,"Se vendio su propiedad al Jugador 2. \n");
+											mvprintw(14, 80, "Your property has been sold! \n");
 										} else if (toWhom[0] == '2')
 										{
 											Properties* lemmeTrySmth = Jugador1 -> mortgageProperty(board.at(Espacio));
 											board.erase(board.begin() + Espacio);
 											board.insert(board.begin() + Espacio, lemmeTrySmth);
-											mvprintw(14,80,"Se hipoteco su propiedad. \n");
+											mvprintw(14, 80, "You have mortgaged your property!\n");
 											
+										} else if (toWhom[0] == '3') {
+											int mortgageTax = (board.at(Espacio) -> getMortgage()) * 0.1;
+											int mortgageDue = board.at(Espacio) -> getMortgage() + mortgageTax;
+											if (Jugador1 -> getMoneyOwned() >= mortgageDue && board.at(Espacio) -> getMortgage() > 0)
+											{
+												Jugador1 -> payMortgage(board.at(Espacio), mortgageDue);
+												board.at(Espacio) -> setMortgage(0);
+												mvprintw(15, 80, "Mortgage has been lifted. \n");
+											} else if (board.at(Espacio) -> getMortgage() == 0 && Jugador1 -> getMoneyOwned() >= mortgageDue)
+											{
+												mvprintw(14, 80, "But this property isn't mortgaged! \n");
+											} else {
+												mvprintw(14, 80, "You're broke. You cannot lift this mortgage. \n");
+											}
 										} else {
-											mvprintw(14,80,"k bai.");											
+											mvprintw(15,80,"k bai.");
 										}
 									}
 								} else if (tryTemp -> getHouses() > 0) {
 									char confirm[1];
 									mvprintw(8,80,board.at(Espacio) -> getTitle().c_str());
-									mvprintw(9,80,"Esta Propiedad es tiene casas/hoteles. Vender? [y/n] \n");
+									mvprintw(9,80,"This property has been improved.\n");
+									mvprintw(10,80,"To sell a hotel, sell 5 houses.\n");
+									mvprintw(11,80,"Coninue? [y/n] \n");
 									getstr(confirm);
 									if (confirm[0] == 'y' || confirm[0] == 'Y')
 									{
 										char howmuch[1];
 										stringstream battery;
-										battery << "Puede vender: " << tryTemp -> getHouses() << "casas";
+										battery << "You can sell: " << tryTemp -> getHouses() << " houses";
 										string ugh = battery.str();
 										mvprintw(11,80, ugh.c_str());
-										mvprintw(12,80,"Cuantas casas desea vender? \n");
+										mvprintw(12,80,"How many houses will you sell? \n");
 										getstr(howmuch);
 										if (howmuch[0] == '0')
 										{
-											mvprintw(12,80,"Coolio. \n");
+											mvprintw(12,80,"Coolio, not selling then. \n");
 										} else if (howmuch[0] == '1')
 										{
-											Jugador1 -> setMoney_Owned((tryTemp -> getHousePrice()/2));
+											Jugador1 -> setMoney_Owned((tryTemp -> getHousePrice()/2)); //gain half
 											tryTemp -> setHouses(tryTemp -> getHouses() - 1);
 										} else if (howmuch[0] == '2' && tryTemp -> getHouses() >= 2)
 										{
-											Jugador1 -> setMoney_Owned(tryTemp -> getHousePrice());
+											Jugador1 -> setMoney_Owned(tryTemp -> getHousePrice()); //for two you gain one
 											tryTemp -> setHouses(tryTemp -> getHouses() - 2);
-										} else if (howmuch[0] == '3' && tryTemp -> getHouses() == 3)
+										} else if (howmuch[0] == '3' && tryTemp -> getHouses() >= 3)
 										{
-											Jugador1 -> setMoney_Owned((tryTemp -> getHousePrice() + tryTemp -> getHousePrice() / 2));
-											tryTemp -> setHouses(0);
-										} 
+											Jugador1 -> setMoney_Owned((tryTemp -> getHousePrice() + tryTemp -> getHousePrice() / 2)); //1 and a half
+											tryTemp -> setHouses(tryTemp -> getHouses() - 3);
+										} else if (howmuch[0] == '4' && tryTemp -> getHouses() >= 4)
+										{
+											Jugador1 -> setMoney_Owned((tryTemp -> getHousePrice() * 2)); //2
+											tryTemp -> setHouses(tryTemp -> getHouses() - 4);
+										} else if (howmuch[0] == '5' && tryTemp -> getHouses() >= 5)
+										{
+											Jugador1 -> setMoney_Owned((tryTemp -> getHousePrice() * 2 + tryTemp -> getHousePrice() / 2)); //2 and a half
+											tryTemp -> setHouses(tryTemp -> getHouses() - 5);
+											tryTemp -> setHotels(0);
+										}
 									}
 								}
 							} else { //NOTHING
@@ -308,7 +335,7 @@ int main(int argc, char const *argv[1])
 							cleanScreen();
 						}else if (keyPlayer[0] == '5')//Construir Casas
 						{
-							//AQUI TAMBIEN
+							//hmmmm hello there, me distraigo rapido, entonces dejo comentado aqui pa saber que tengo que hacer eso bai <3
 						}else if(keyPlayer[0] == '6'){//Abandonar el juego
 							endwin();
 							exit(0);
@@ -827,7 +854,7 @@ void draw(int space){
 		mvprintw(15,20,"*          * | | *         *\n");
 		mvprintw(16,20,"*           *****          *\n");
 		mvprintw(17,20,"*           *---*          *\n");
-		mvprintw(18,20,"*    Electronic Company    *\n");
+		mvprintw(18,20,"*      Electric Company    *\n");
 		mvprintw(19,20,"*  1 Service->rent 4 times *\n");
 		mvprintw(20,20,"*  amount shown on dice.   *\n");
 		mvprintw(21,20,"*2 Services->rent 10 times *\n");
@@ -934,7 +961,7 @@ int drawCard(){ //Recibe la posicion en el vector, si valor<40 el valor retornad
     }else if (randCard == 3){
     	linea[3] = "*      Bank error        *\n";
     	linea[4] = "*     in your favor      *\n";
-    	linea[5] = "*      collet $200       *\n";
+    	linea[5] = "*     collect $200       *\n";
     	valor = 200;
     } else if (randCard == 4){
     	linea[3] = "*        Receive         *\n";

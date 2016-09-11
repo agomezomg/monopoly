@@ -10,7 +10,7 @@ using std::stringstream;
 
 Properties::Properties(int rent,int sale,int mortgage,int price,string title,bool owned):rent(rent),sale(sale),mortgage(mortgage),
 price(price),title(title),owned(owned) {
-	
+	this -> mortgage = 0;
 }
 
 Properties::Properties(){
