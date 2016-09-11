@@ -10,8 +10,26 @@
 using std::string;
 using std::stringstream;
 
-Avenue::Avenue(int rent,int sale,int mortgage,int price,string title,bool owned):Properties(rent,sale,mortgage,price,title,owned) {
-
+Avenue::Avenue(int rent,int sale,int mortgage,int price,string title,bool owned) : Properties(rent,sale,mortgage,price,title,owned) {
+    if (title == "Mediterranean Avenue")
+    {
+        this -> color = "Brown";
+    } else if (title == "Baltic Avenue")
+    {
+        this -> color = "Brown";
+    } else if (title == "Oriental Avenue")
+    {
+        this -> color = "Light Blue";
+    } else if (title == "Vermont Avenue")
+    {
+        this -> color = "Light Blue";
+    } else if (title == "Connecticut Avenue")
+    {
+        this -> color = "Light Blue";
+    } else if (title == "St. Charles Place")
+    {
+        this -> color = "Pink";
+    }
 }
 
 Avenue::~Avenue() {
