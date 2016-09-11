@@ -10,7 +10,7 @@
 using std::string;
 using std::stringstream;
 
-Avenue::Avenue(int rent,int sale,int mortgage,int price,string title,bool owned) : Properties(rent,sale,mortgage,price,title,owned) {
+Avenue::Avenue(int rent, int sale, int mortgage, int price, string title, bool owned) : Properties(rent, sale, mortgage, price, title, owned) {
     if (title == "Mediterranean Avenue")
     {
         this -> color = "Brown";
