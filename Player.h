@@ -40,5 +40,5 @@ public:
 	string getProperties(int);
 	void setProperties(Properties*);
 	bool validarProperties(string);
-	bool checkColorProperties();
+	bool canBuildOnLot(int);
 };
