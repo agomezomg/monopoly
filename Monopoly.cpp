@@ -242,9 +242,9 @@ int main(int argc, char const *argv[1])
 											mvprintw(14,80,"Se vendio su propiedad al Jugador 2. \n");
 										} else if (toWhom[0] == '2')
 										{
-											Jugador1 = Jugador1 -> mortgageProperty(Jugador1, board.at(Espacio));								
-											Jugador1 -> setMoney_Owned((tryTemp -> getMortgage()));
-											board.at(Espacio) -> setOwned(false);
+											Properties* lemmeTrySmth = Jugador1 -> mortgageProperty(board.at(Espacio));
+											board.erase(board.begin() + Espacio);
+											board.insert(board.begin() + Espacio, lemmeTrySmth);
 											mvprintw(14,80,"Se hipoteco su propiedad. \n");
 											
 										} else {

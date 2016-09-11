@@ -211,7 +211,7 @@ Player* Player::removeProperty(Player* p, Properties* agh) {
 	return p;
 }
 
-Player* Player::mortgageProperty(Player* p, Properties* ugh) {
+Properties* Player::mortgageProperty(Properties* ugh) {
 	/*if (ugh -> getTitle() == "Mediterranean Avenue")
     {
         ugh -> setMortgage((ugh -> getPrice() / 2));
@@ -289,9 +289,13 @@ Player* Player::mortgageProperty(Player* p, Properties* ugh) {
     		this -> properties.at(i) -> setMortgage(ugh -> getMortgage());
     	}
     }
+
+    this -> moneyOwned += ugh -> getMortgage();
+
+    return ugh;
 }
 
-void Player::payMortgage(int payM, Properties* mortgagedP) {
+Properties* Player::payMortgage(int payM, Properties* mortgagedP) {
 	for (int i = 0; i < properties.size(); ++i)
 	{
 		if (mortgagedP -> getTitle() == properties.at(i) -> getTitle())
