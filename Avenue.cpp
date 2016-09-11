@@ -14,60 +14,88 @@ Avenue::Avenue(int rent, int sale, int mortgage, int price, string title, bool o
     if (title == "Mediterranean Avenue")
     {
         this -> color = "Brown";
+        this -> housePrice = 25;
     } else if (title == "Baltic Avenue")
     {
         this -> color = "Brown";
+        this -> housePrice = 25;
     } else if (title == "Oriental Avenue")
     {
         this -> color = "Light Blue";
+        this -> housePrice = 25;
     } else if (title == "Vermont Avenue")
     {
         this -> color = "Light Blue";
+        this -> housePrice = 25;
     } else if (title == "Connecticut Avenue")
     {
         this -> color = "Light Blue";
+        this -> housePrice = 25;
     } else if (title == "St. Charles Place")
     {
         this -> color = "Pink";
+        this -> housePrice = 50;
     } else if (title == "States Avenue")
     {
         this -> color = "Pink";
+        this -> housePrice = 50;
     } else if (title == "Virginia Avenue")
     {
         this -> color = "Pink";
+        this -> housePrice = 50;
     } else if (title == "St. James Place")
     {
         this -> color = "Orange";
+        this -> housePrice = 50;
     } else if (title == "Tennessee Avenue")
     {
         this -> color = "Orange";
+        this -> housePrice = 50;
     } else if (title == "New York Avenue")
     {
         this -> color = "Orange"; 
+        this -> housePrice = 50;
     } else if (title == "Kentucky Avenue")
     {
         this -> color = "Red";
+        this -> housePrice = 75;
     } else if (title == "Indiana Avenue")
     {
         this -> color = "Red";
+        this -> housePrice = 75;
     }  else if (title == "Illinois Avenue")
     {
         this -> color = "Red";
+        this -> housePrice = 75;
     }  else if (title == "Atlantic Avenue")
     {
         this -> color = "Yellow";
+        this -> housePrice = 75;
     }  else if (title == "Ventnor Avenue")
     {
         this -> color = "Yellow";
+        this -> housePrice = 75;
     }  else if (title == "Marvin Gardens")
     {
         this -> color = "Yellow";
-    }  else if (title == "Park PLace")
+        this -> housePrice = 75;
+    }  else if (title == "Pacific Avenue")
+    {
+        /* code */
+    }  else if (title == "North Carolina Avenue")
+    {
+        /* code */
+    } else if (title == "Pennsylvania Avenue")
+    {
+        /* code */
+    }else if (title == "Park PLace")
     {
         this -> color = "Dark Blue";
+        this -> housePrice = 100;
     }  else if (title == "Boardwalk")
     {
         this -> color = "Dark Blue";
+        this -> housePrice = 100;
     } else {
         this -> color = title;
     }

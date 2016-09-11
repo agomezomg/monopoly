@@ -6,22 +6,22 @@
 6 100 50 100 Oriental-Avenue 0
 2 60 30 60 FORTUNE 0
 6 100 50 100 Connecticut-Avenue 0
-8 120 60 120 Vermont-Avenue 0
+8 120 60 120 Vermont-Avenue 1
 8 120 60 120 VISIT-JAIL 0
 10 140 70 140 Plaza-San-Carlos 0
-2 60 30 60 Electric-Services 1
+2 60 30 60 Electric-Services 0
 10 140 70 140 Status-Avenue 0
 12 160 80 160 Virginia-Avenue 0
 2 60 30 60 RailRoad 0
 14 180 90 180 Plaza-SaintJames 0
 14 180 90 180 Community-CHEST 0
 14 180 90 180 Tennessee-Avenue 0
-16 200 100 200 New-York-Avenue 1
+16 200 100 200 New-York-Avenue 0
 2 60 30 60 FREE-SPACE 0
 18 220 110 220 Kentucky-Avenue 0
 2 60 30 60 FORTUNE 0
 18 220 110 220 Indiana-Avenue 0
-20 240 120 240 Illinois-Avenue 1
+20 240 120 240 Illinois-Avenue 0
 2 60 30 60 RailRoad 0
 22 260 130 260 Atlantic-Avenue 0
 22 260 130 260 Vetnor-Avenue 0
@@ -38,5 +38,4 @@
 2 60 30 60 TAXES 0
 50 400 250 400 Muelle-Avenue 0
 2 60 30 60 GO 0
-0 0 0 0 GO 0
 Exit

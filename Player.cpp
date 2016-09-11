@@ -1,4 +1,6 @@
 #include "Player.h"
+#include "Properties.h"
+#include "Avenue.h"
 using namespace std;
 #include <iostream>
 
@@ -150,29 +152,50 @@ bool Player::canBuildOnLot(int position) {
 
 	if (brown == 2)
 	{
+		properties.at(position) -> setRent(properties.at(position) -> getRent() * 2);
 		return true;
 	} else if (lightBlue == 3)
 	{
+		properties.at(position) -> setRent(properties.at(position) -> getRent() * 2);
 		return true;
 	} else if (pink == 3)
 	{
+		properties.at(position) -> setRent(properties.at(position) -> getRent() * 2);
 		return true;
 	} else if (orange == 3)
 	{
+		properties.at(position) -> setRent(properties.at(position) -> getRent() * 2);
 		return true;
 	} else if (red == 3)
 	{
+		properties.at(position) -> setRent(properties.at(position) -> getRent() * 2);
 		return true;
 	} else if (yellow == 3)
 	{
+		properties.at(position) -> setRent(properties.at(position) -> getRent() * 2);
 		return true;
 	} else if (green == 3)
 	{
+		properties.at(position) -> setRent(properties.at(position) -> getRent() * 2);
 		return true;
 	} else if (darkBlue == 2)
 	{
+		properties.at(position) -> setRent(properties.at(position) -> getRent() * 2);
 		return true;
 	}
 	
 	return false;
+}
+
+void Player::sellProperty(Avenue* temp) {
+
+	for (int i = 0; i < properties.size(); ++i)
+	{
+		if (temp -> getTitle() == properties.at(i) -> getTitle())
+		{
+			this -> moneyOwned += temp -> getPrice();
+			temp -> setOwned(false);
+			properties.erase(properties.begin() + i);
+		}
+	}
 }

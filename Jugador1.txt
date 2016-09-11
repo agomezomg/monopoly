@@ -1,6 +1,4 @@
-Juana 1500 24
-Electric-Services
-New-York-Avenue
-Illinois-Avenue
+Juana 1880 9
+Vermont-Avenue
 
 Exit

@@ -1,5 +1,6 @@
 #pragma once
 #include "Properties.h"
+#include "Avenue.h"
 #include "Table.h"
 #include <string>
 #include <sstream>
@@ -41,4 +42,5 @@ public:
 	void setProperties(Properties*);
 	bool validarProperties(string);
 	bool canBuildOnLot(int);
+	void sellProperty(Avenue*);
 };
