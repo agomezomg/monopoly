@@ -10,7 +10,7 @@ using std::stringstream;
 
 Properties::Properties(int rent,int sale,int mortgage,int price,string title,bool owned):rent(rent),sale(sale),mortgage(mortgage),
 price(price),title(title),owned(owned) {
-
+	
 }
 
 Properties::Properties(){
@@ -268,3 +268,10 @@ void Properties::drawItem(int space) {
 string Properties::getTitle() { //pending
 	return this->title;
 }
+
+string Properties::toString(int SobreCargar) { //pending
+	stringstream ss;
+	ss << rent << " " <<sale<< " " <<mortgage<< " " <<price<< " " <<title<< " " <<owned;
+	return ss.str();
+}
+//int rent,int sale,int mortgage,int price,string title,bool owned

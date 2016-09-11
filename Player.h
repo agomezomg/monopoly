@@ -34,8 +34,10 @@ public:
 	bool canGetOutJail();
 	void setCanGetOutJail();
 	string toString();
+	string toString(int);
 	void TurnControl(int);
 	string getProperties();
+	string getProperties(int);
 	void setProperties(Properties*);
 	bool validarProperties(string);
 	bool checkColorProperties();

@@ -8,6 +8,11 @@
 #include "Avenue.h"
 #include "Cards.h"
 #include <vector>
+#include <sstream>
+#include <fstream>
+#include <stdio.h>
+#include <string.h>
+
 
 using namespace std;
 
@@ -19,7 +24,7 @@ void draw(int);
 int drawCard();
 bool ifJail();
 
-int main(int argc, char const *argv[])
+int main(int argc, char const *argv[1])
 {
 	initscr();
 	start_color();
@@ -27,196 +32,303 @@ int main(int argc, char const *argv[])
 	char key[1];
 	boardPic();
 	//srand(time(0));
-	move(4,80);
-	printw("WELCOME TO MONOPOLY");
-	move(8,80);
-	printw("NEW GAME --> TAP N");
-	move(10,80);
-	printw("LOAD GAME -> TAP L");
-	move(12,80);
-	printw("EXIT ------> TAP E");
-	move(14,80);
-	printw("OPTION: ");
-	getstr(key);
-	cleanScreen();
-	endwin();
+	bool Load=true;
 	int ContTurno=0;
-	if(key[0] == 'n' || key[0] == 'N'){
-		vector<Properties*> board;
-		board.push_back(new Avenue(2,60,30,60,"Mediterranean Avenue",false));
-		board.push_back(new Avenue(2,60,30,60,"Community CHEST",false));
-		board.push_back(new Avenue(4,60,30,60,"Valtic Avenue",false));
-		board.push_back(new Avenue(4,60,30,60,"TAXES",false));
-		board.push_back(new Avenue(2,60,30,60,"RailRoad",false));
-		board.push_back(new Avenue(6,100,50,100,"Oriental Avenue",false));
-		board.push_back(new Avenue(2,60,30,60,"FORTUNE",false));
-		board.push_back(new Avenue(6,100,50,100,"Connecticut Avenue",false));
-		board.push_back(new Avenue(8,120,60,120,"Vermont Avenue",false));
-		board.push_back(new Avenue(8,120,60,120,"VISIT JAIL",false));
-		board.push_back(new Avenue(10,140,70,140,"Plaza San Carlos",false));
-		board.push_back(new Avenue(2,60,30,60,"Electric Services",false));
-		board.push_back(new Avenue(10,140,70,140,"Status Avenue",false));
-		board.push_back(new Avenue(12,160,80,160,"Virginia Avenue",false));
-		board.push_back(new Avenue(2,60,30,60,"RailRoad",false));
-		board.push_back(new Avenue(14,180,90,180,"Plaza SaintJames",false));
-		board.push_back(new Avenue(14,180,90,180,"Community CHEST",false));
-		board.push_back(new Avenue(14,180,90,180,"Tennessee Avenue",false));
-		board.push_back(new Avenue(16,200,100,200,"New York Avenue",false));
-		board.push_back(new Avenue(2,60,30,60,"FREE SPACE",false));
-		board.push_back(new Avenue(18,220,110,220,"Kentucky Avenue",false));
-		board.push_back(new Avenue(2,60,30,60,"FORTUNE",false));
-		board.push_back(new Avenue(18,220,110,220,"Indiana Avenue",false));
-		board.push_back(new Avenue(20,240,120,240,"Illinois Avenue",false));
-		board.push_back(new Avenue(2,60,30,60,"RailRoad",false));
-		board.push_back(new Avenue(22,260,130,260,"Atlantic Avenue",false));
-		board.push_back(new Avenue(22,260,130,260,"Vetnor Avenue",false));
-		board.push_back(new Avenue(22,260,130,260,"Water Services",false));
-		board.push_back(new Avenue(24,280,140,280,"Jardines Marvin Avenue",false));
-		board.push_back(new Avenue(22,260,130,260,"GO TO JAIL",false));
-		board.push_back(new Avenue(26,300,150,300,"Pacific Avenue",false));
-		board.push_back(new Avenue(26,300,150,300,"North Carolina Avenue",false));
-		board.push_back(new Avenue(26,300,150,300,"Community CHEST",false));
-		board.push_back(new Avenue(28,300,150,300,"Pensylvania Avenue",false));
-		board.push_back(new Avenue(26,300,150,300,"RailRoad",false));
-		board.push_back(new Avenue(26,300,150,300,"FORTUNE",false));
-		board.push_back(new Avenue(35,300,150,300,"Plaza Park",false));
-		board.push_back(new Avenue(2,60,30,60,"TAXES",false));
-		board.push_back(new Avenue(50,400,250,400,"Muelle Avenue",false));
-		board.push_back(new Avenue(2,60,30,60,"GO",false));
-		//Falta La Inicializacion de las fichas 
-			Player* Jugador1=new Player("Juana",2000);
-			Player* Jugador2=new Player("Juanito",2000);
-		do
-		{	
-			if(Jugador1->checkInJail())	//SI EL JUGADOR ESTA EN LA CARCEL
+	vector<Properties*> board;
+	Player* Jugador1;
+	Player* Jugador2;
+	do{
+		move(4,80);
+		printw("WELCOME TO MONOPOLY");
+		move(8,80);
+		printw("NEW GAME --> TAP N");
+		move(10,80);
+		printw("LOAD GAME -> TAP L");
+		move(12,80);
+		printw("EXIT ------> TAP E");
+		move(14,80);
+		printw("OPTION: ");
+		getstr(key);
+		cleanScreen();
+		endwin();
+		if(key[0] == 'n' || key[0] == 'N'){
+			if(Load==true)
 			{	
-				mvprintw(4,80, "Player ","You are in jail you need to");
-				mvprintw(5,80, "get out to throw the dice again");
-				Jugador1->setInJail(ifJail());
-				if(Jugador1->checkInJail()){
-					
-				}else{
-					Jugador1->setMoneyOwned(50);
-				}
-				cleanScreen();
-			}else{
-				int ControlTurno=0,dice1=0,dice2=0;
-				char keyPlayer[1];
-				if (ControlTurno%2==0)
-				{
-					mvprintw(4,80, "Player %d",ControlTurno);
-					mvprintw(4,89, Jugador1 -> getName().c_str());
-					mvprintw(5,80,"Choose your option...");
-					mvprintw(6,80,"1.-Throwing dice\n");
-					mvprintw(7,80,"2.-See your properties\n");
-					mvprintw(8,80,"3.-See your data\n");
-					mvprintw(9,80,"4.-Sale Properties\n");
-					mvprintw(10,80,"5.-Build on complete avenues\n");
-					//QUE NO HAREMOS PROBABLEMENTE mvprintw(12,80,"6.-Trade\n");
-					mvprintw(11,80,"6.-Quit no QUICK \n");
-					mvprintw(12,80,"7.-Save Game for later \n");
-					mvprintw(13,80,"Your option? -> ");
-					getstr(keyPlayer);
+				board.push_back(new Avenue(2,60,30,60,"Mediterranean-Avenue",false));
+				board.push_back(new Avenue(2,60,30,60,"Community-CHEST",false));
+				board.push_back(new Avenue(4,60,30,60,"Valtic-Avenue",false));
+				board.push_back(new Avenue(4,60,30,60,"TAXES",false));
+				board.push_back(new Avenue(2,60,30,60,"RailRoad",false));
+				board.push_back(new Avenue(6,100,50,100,"Oriental-Avenue",false));
+				board.push_back(new Avenue(2,60,30,60,"FORTUNE",false));
+				board.push_back(new Avenue(6,100,50,100,"Connecticut-Avenue",false));
+				board.push_back(new Avenue(8,120,60,120,"Vermont-Avenue",false));
+				board.push_back(new Avenue(8,120,60,120,"VISIT-JAIL",false));
+				board.push_back(new Avenue(10,140,70,140,"Plaza-San-Carlos",false));
+				board.push_back(new Avenue(2,60,30,60,"Electric-Services",false));
+				board.push_back(new Avenue(10,140,70,140,"Status-Avenue",false));
+				board.push_back(new Avenue(12,160,80,160,"Virginia-Avenue",false));
+				board.push_back(new Avenue(2,60,30,60,"RailRoad",false));
+				board.push_back(new Avenue(14,180,90,180,"Plaza-SaintJames",false));
+				board.push_back(new Avenue(14,180,90,180,"Community-CHEST",false));
+				board.push_back(new Avenue(14,180,90,180,"Tennessee-Avenue",false));
+				board.push_back(new Avenue(16,200,100,200,"New-York-Avenue",false));
+				board.push_back(new Avenue(2,60,30,60,"FREE-SPACE",false));
+				board.push_back(new Avenue(18,220,110,220,"Kentucky-Avenue",false));
+				board.push_back(new Avenue(2,60,30,60,"FORTUNE",false));
+				board.push_back(new Avenue(18,220,110,220,"Indiana-Avenue",false));
+				board.push_back(new Avenue(20,240,120,240,"Illinois-Avenue",false));
+				board.push_back(new Avenue(2,60,30,60,"RailRoad",false));
+				board.push_back(new Avenue(22,260,130,260,"Atlantic-Avenue",false));
+				board.push_back(new Avenue(22,260,130,260,"Vetnor-Avenue",false));
+				board.push_back(new Avenue(22,260,130,260,"Water-Services",false));
+				board.push_back(new Avenue(24,280,140,280,"Jardines-Marvin-Avenue",false));
+				board.push_back(new Avenue(22,260,130,260,"GO-TO-JAIL",false));
+				board.push_back(new Avenue(26,300,150,300,"Pacific-Avenue",false));
+				board.push_back(new Avenue(26,300,150,300,"North-Carolina-Avenue",false));
+				board.push_back(new Avenue(26,300,150,300,"Community-CHEST",false));
+				board.push_back(new Avenue(28,300,150,300,"Pensylvania-Avenue",false));
+				board.push_back(new Avenue(26,300,150,300,"RailRoad",false));
+				board.push_back(new Avenue(26,300,150,300,"FORTUNE",false));
+				board.push_back(new Avenue(35,300,150,300,"Plaza-Park",false));
+				board.push_back(new Avenue(2,60,30,60,"TAXES",false));
+				board.push_back(new Avenue(50,400,250,400,"Muelle-Avenue",false));
+				board.push_back(new Avenue(2,60,30,60,"GO",false));
+				//Falta La Inicializacion de las fichas 
+				Jugador1=new Player("Juana",2000);
+				Jugador2=new Player("Juanito",2000);
+				mvprintw(18,80, "New game");
+			}		
+			do
+			{	
+				if(Jugador1->checkInJail())	//SI EL JUGADOR ESTA EN LA CARCEL
+				{	
+					mvprintw(4,80, "Player ","You are in jail you need to");
+					mvprintw(5,80, "get out to throw the dice again");
+					Jugador1->setInJail(ifJail());
+					if(Jugador1->checkInJail()){
+						
+					}else{
+						Jugador1->setMoneyOwned(50);
+					}
 					cleanScreen();
-					if(keyPlayer[0] == '1'){//TIRAR EL DADO Y VALIDACIONES DE POSICION
-						dice1 = (1 + rand() % 6);
-						dice2 = (1 + rand() % 6);
-						int spaces = dice1 + dice2;
-						Jugador1 -> TurnControl(spaces);
-						init_pair(1, COLOR_BLACK, COLOR_WHITE);
-						attron(COLOR_PAIR(1));
-						srand (time(NULL));
-						drawDiceOne(dice1);
-						drawDiceTwo(dice2);
-						attroff(COLOR_PAIR(1));
-						getch();
-						int Espacio=Jugador1->getPosition()-1;
+				}else{
+					int ControlTurno=0,dice1=0,dice2=0;
+					char keyPlayer[1];
+					if (ControlTurno%2==0)
+					{
+						mvprintw(4,80, "Player %d",ControlTurno);
+						mvprintw(4,89, Jugador1 -> getName().c_str());
+						mvprintw(5,80,"Choose your option...");
+						mvprintw(6,80,"1.-Throwing dice\n");
+						mvprintw(7,80,"2.-See your properties\n");
+						mvprintw(8,80,"3.-See your data\n");
+						mvprintw(9,80,"4.-Sale Properties\n");
+						mvprintw(10,80,"5.-Build on complete avenues\n");
+						//QUE NO HAREMOS PROBABLEMENTE mvprintw(12,80,"6.-Trade\n");
+						mvprintw(11,80,"6.-Quit no QUICK \n");
+						mvprintw(12,80,"7.-Save Game for later \n");
+						mvprintw(13,80,"Your option? -> ");
+						getstr(keyPlayer);
 						cleanScreen();
-						Espacio++;
-						draw(Espacio);
-						if (Espacio==2||Espacio==7||Espacio==17||Espacio==22||Espacio==33||Espacio==36)
-						{	
-							int TemporalCarta=0;
-							TemporalCarta=drawCard();
-							if(TemporalCarta<40&&TemporalCarta!=10&&TemporalCarta>-6){
-								Jugador1->TurnControl(TemporalCarta);	
-							}else if(TemporalCarta!=10){
-								Jugador1->setMoney_Owned(TemporalCarta);
-							}else{
-								Jugador1->setPosition(10);
-								Jugador1->setInJail(true);
-							}
-							//CARTAS DE COMMMUNITY CHEST Y FORTUNE						
-						}else if (Espacio==4||Espacio==38){
-							mvprintw(6,80,"Gracias por pagar tus impuestos de 200$!");
-							Jugador1->setMoneyOwned(200);
-							//TAXES
-						}else if (Espacio==30){
-							mvprintw(6,80,"Por ser muy Brayan ve directamente a la carcel!");
-							Jugador1->TurnControl(-20);
-							Jugador1->setInJail(true);
-							//GO TO JAIL
-						}else if (Espacio==20||Espacio==10){
-							mvprintw(6,80,"Esta Casilla no hace absolutamente nada!");
-							//VISIT JAIL,FREE SPACE NO HACEN NADA SOLO ES EL DIBUJO
-						}else if(Espacio!=2&&Espacio!=7&&Espacio!=17&&Espacio!=22&&Espacio!=33&&Espacio!=36&&Espacio!=10&&Espacio!=38
-							&&Espacio!=4&&Espacio!=20&&Espacio!=30){
-							Espacio--;
-							if (board.at(Espacio)->getOwned()==false)
+						if(keyPlayer[0] == '1'){//TIRAR EL DADO Y VALIDACIONES DE POSICION
+							dice1 = (1 + rand() % 6);
+							dice2 = (1 + rand() % 6);
+							int spaces = dice1 + dice2;
+							Jugador1 -> TurnControl(spaces);
+							init_pair(1, COLOR_BLACK, COLOR_WHITE);
+							attron(COLOR_PAIR(1));
+							srand (time(NULL));
+							drawDiceOne(dice1);
+							drawDiceTwo(dice2);
+							attroff(COLOR_PAIR(1));
+							getch();
+							int Espacio=Jugador1->getPosition()-1;
+							cleanScreen();
+							Espacio++;
+							draw(Espacio);
+							if (Espacio==2||Espacio==7||Espacio==17||Espacio==22||Espacio==33||Espacio==36)
 							{	
-								
-								if (Jugador1->getMoneyOwned()<board.at(Espacio)->getPrice())
-								{
-									mvprintw(6,60,"You do not have money to buy this property\n");
-						  		}else{
-									char keyPlayer[1];
-									mvprintw(6,80,"1.-Buy this Property\n");
-									mvprintw(7,80,"2.-NO\n");
-									getstr(keyPlayer);
-									if (keyPlayer[0] == '1')
-									{
-									mvprintw(8,80,"Congrats you bought this property!\n");
-									Jugador1->setMoneyOwned(board.at(Espacio)->getPrice());
-									board.at(Espacio)->setOwned(true);
-									Jugador1->setProperties(board.at(Espacio));
-									}
-								}						
-							}else{//CUANDO ALGUIEN TIENE LA PROPIEDAD
-								if (Jugador1->validarProperties(board.at(Espacio)->getTitle()))
+								int TemporalCarta=0;
+								TemporalCarta=drawCard();
+								if(TemporalCarta<40&&TemporalCarta!=10&&TemporalCarta>-6){
+									Jugador1->TurnControl(TemporalCarta);	
+								}else if(TemporalCarta!=10){
+									Jugador1->setMoney_Owned(TemporalCarta);
+								}else{
+									Jugador1->setPosition(10);
+									Jugador1->setInJail(true);
+								}
+								//CARTAS DE COMMMUNITY CHEST Y FORTUNE						
+							}else if (Espacio==4||Espacio==38){
+								mvprintw(6,80,"Gracias por pagar tus impuestos de 200$!");
+								Jugador1->setMoneyOwned(200);
+								//TAXES
+							}else if (Espacio==30){
+								mvprintw(6,80,"Por ser muy Brayan ve directamente a la carcel!");
+								Jugador1->TurnControl(-20);
+								Jugador1->setInJail(true);
+								//GO TO JAIL
+							}else if (Espacio==20||Espacio==10){
+								mvprintw(6,80,"Esta Casilla no hace absolutamente nada!");
+								//VISIT JAIL,FREE SPACE NO HACEN NADA SOLO ES EL DIBUJO
+							}else if(Espacio!=2&&Espacio!=7&&Espacio!=17&&Espacio!=22&&Espacio!=33&&Espacio!=36&&Espacio!=10&&Espacio!=38
+								&&Espacio!=4&&Espacio!=20&&Espacio!=30){
+								Espacio--;
+								if (board.at(Espacio)->getOwned()==false)
 								{	
-									mvprintw(9,80,board.at(Espacio)->getTitle().c_str());
-									mvprintw(8,80,"Esta Propiedad es tuya");	
-								}else{//COBRARLE AL JUGADOR LA RENTA
-									mvprintw(8,80,"Pagas la renta ya que esta propiedad no es");
-									mvprintw(9,80,board.at(Espacio)->getTitle().c_str());
-									Jugador1->setMoneyOwned(board.at(Espacio)->getRent());
+									
+									if (Jugador1->getMoneyOwned()<board.at(Espacio)->getPrice())
+									{
+										mvprintw(6,60,"You do not have money to buy this property\n");
+							  		}else{
+										char keyPlayer[1];
+										mvprintw(6,80,"1.-Buy this Property\n");
+										mvprintw(7,80,"2.-NO\n");
+										getstr(keyPlayer);
+										if (keyPlayer[0] == '1')
+										{
+										mvprintw(8,80,"Congrats you bought this property!\n");
+										Jugador1->setMoneyOwned(board.at(Espacio)->getPrice());
+										board.at(Espacio)->setOwned(true);
+										Jugador1->setProperties(board.at(Espacio));
+										}
+									}						
+								}else{//CUANDO ALGUIEN TIENE LA PROPIEDAD
+									if (Jugador1->validarProperties(board.at(Espacio)->getTitle()))
+									{	
+										mvprintw(9,80,board.at(Espacio)->getTitle().c_str());
+										mvprintw(8,80,"Esta Propiedad es tuya");	
+									}else{//COBRARLE AL JUGADOR LA RENTA
+										mvprintw(8,80,"Pagas la renta ya que esta propiedad no es");
+										mvprintw(9,80,board.at(Espacio)->getTitle().c_str());
+										Jugador1->setMoneyOwned(board.at(Espacio)->getRent());
+									}
 								}
 							}
-						}
-						echo();
-						getch();
-						cleanScreen();
-					}else if(keyPlayer[0] == '2'){
-						//Observar las propiedades
-						mvprintw(16,80,Jugador1->getProperties().c_str());
-					}else if(keyPlayer[0] == '3'){
-						//Observar la Informacion del jugador
-						mvprintw(15,80, Jugador1 -> toString().c_str());
-					}else if(keyPlayer[0] == '4'){//Vender Propiedades
-						
-					}else if (keyPlayer[0] == '5')//Construir Casas
-					{
+							echo();
+							getch();
+							cleanScreen();
+						}else if(keyPlayer[0] == '2'){
+							//Observar las propiedades
+							mvprintw(16,80,Jugador1->getProperties().c_str());
+						}else if(keyPlayer[0] == '3'){
+							//Observar la Informacion del jugador
+							mvprintw(15,80, Jugador1 -> toString().c_str());
+						}else if(keyPlayer[0] == '4'){//Vender Propiedades
 							
-					}else if(keyPlayer[0] == '6'){//Abandonar el juego
-						endwin();
-						exit(0);
-					}else if(keyPlayer[0] == '7'){//Salvar el juego
-
+						}else if (keyPlayer[0] == '5')//Construir Casas
+						{
+								
+						}else if(keyPlayer[0] == '6'){//Abandonar el juego
+							endwin();
+							exit(0);
+						}else if(keyPlayer[0] == '7'){//Salvar el juego
+							ofstream ficheroSalida;
+							ficheroSalida.open ("./Tablero.txt");
+							for (int i = 0; i <board.size(); ++i)
+							{
+							ficheroSalida <<board.at(i)->toString(1)<<endl;
+							}
+							ficheroSalida << "Exit";
+							ficheroSalida.close();
+							//FIN GUARDADO DEL TABLERO
+							ofstream ficheroSalida1;
+							ficheroSalida1.open ("./Jugador1.txt");
+							ficheroSalida1 <<Jugador1->toString(1)<<endl;
+							ficheroSalida1<< Jugador1->getProperties(1)<<endl;
+							ficheroSalida1 << "Exit";
+							ficheroSalida1.close();
+							//FIN GUARDADO JUGADOR 1
+							/*ofstream ficheroSalida2;
+							ficheroSalida2.open ("./Jugador2.txt");
+							ficheroSalida2 <<Jugador2->toString(1)<<endl;
+							ficheroSalida2<< Jugador2->getProperties(1)<<endl;
+							ficheroSalida2 << "Exit";
+							ficheroSalida2.close();*FIN GUARDADO JUADOR 2/*/
+						}
 					}
 				}
+			}while (true);
+		}else if(key[0] == 'l' || key[0] == 'L'){
+			Load=false;
+			ifstream myfile (argv[1]);
+			myfile.open("./Tablero.txt");
+			int Renta,Compra,Hipoteca,Venta,Estado,Dinero,Posicion;
+			string Nombre,Temporal;
+			//char str[30];
+			char const*J;
+			while(Temporal!="Exit"){
+				myfile>>Temporal;
+				J=Temporal.c_str();
+				Renta=atoi(J);
+				myfile>>Temporal;
+				J=Temporal.c_str();
+				Compra=atoi(J);
+				myfile>>Temporal;
+				J=Temporal.c_str();
+				Hipoteca=atoi(J);
+				myfile>>Temporal;
+				J=Temporal.c_str();
+				Venta=atoi(J);
+				myfile>>Nombre;
+				myfile>>Temporal;
+				J=Temporal.c_str();
+				Estado=atoi(J);
+				board.push_back(new Avenue(Renta,Compra,Hipoteca,Venta,Nombre,Estado));
+
+			}//FIN CARGA DEL TABLERO
+			myfile.close();
+			myfile.open("./Jugador1.txt");
+			myfile>>Nombre;
+			myfile>>Temporal;
+			J=Temporal.c_str();
+			Dinero=atoi(J);
+			myfile>>Temporal;
+			J=Temporal.c_str();
+			Posicion=atoi(J);
+			Jugador1=new Player(Nombre,Dinero);
+			Jugador1->setPosition(Posicion);
+			//FIN INICIALIZAR EL JUGADOR
+			while(Temporal!="Exit"){
+				myfile>>Temporal;
+				for (int i = 0; i < board.size(); ++i)
+				{
+					if (Temporal==board.at(i)->getTitle())
+					{
+						Jugador1->setProperties(board.at(i));
+					}
+				}
+				
 			}
-		}while (true);
-	}
+			myfile.close();
+			//FIN JUGADOR 1
+			/*yfile.open("./Jugador2.txt");
+			myfile>>Nombre;
+			myfile>>Temporal;
+			J=Temporal.c_str();
+			Dinero=atoi(J);
+			myfile>>Temporal;
+			J=Temporal.c_str();
+			Posicion=atoi(J);
+			Jugador2=new Player(Nombre,Dinero);
+			Jugador2->setPosition(Posicion);
+			//FIN INICIALIZAR EL JUGADOR
+			while(Temporal!="Exit"){
+				myfile>>Temporal;
+				for (int i = 0; i < board.size(); ++i)
+				{
+					if (Temporal==board.at(i)->getTitle())
+					{
+						Jugador2->setProperties(board.at(i));
+					}
+				}
+				
+			}
+			myfile.close();*/
+			mvprintw(16,80, "Load Game Succesful now get a new game to load your last game! ");	
+		}
+	}while(true);	
 }
 
 

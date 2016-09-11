@@ -44,6 +44,11 @@ string Player::toString() {
 	ss << "Name: " << name << " you have $" << moneyOwned << " and you are in square: " << spaces;
 	return ss.str();
 }
+string Player::toString(int SobreCarga) {
+	stringstream ss;
+	ss << name << " " << moneyOwned <<" " << spaces;
+	return ss.str();
+}
 
 int Player::getMoneyOwned() {
 	return this->moneyOwned;
@@ -67,6 +72,14 @@ string Player::getProperties() {
 	for (int i = 0; i < properties.size(); ++i)
 	{
 		ss << "     " << properties.at(i) -> toString() << "\n";
+	}
+	return ss.str();
+}
+string Player::getProperties(int SobreCarga) {
+	stringstream ss;
+	for (int i = 0; i < properties.size(); ++i)
+	{
+		ss<< properties.at(i)->getTitle()<<"\n";
 	}
 	return ss.str();
 }

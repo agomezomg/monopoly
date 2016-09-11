@@ -33,6 +33,7 @@ public:
 	void setColor(string);
 	void setAll(int);
 	string toString();
+	string toString(int);
 	int getDeduction();
 	void setDeduction(int);
 	void drawItem(int space);
