@@ -306,24 +306,34 @@ int main(int argc, char const *argv[1])
 										{
 											Jugador1 -> setMoney_Owned((tryTemp -> getHousePrice()/2)); //gain half
 											tryTemp -> setHouses(tryTemp -> getHouses() - 1);
+											mvprintw(12,80,"Sold 1 house. \n");
 										} else if (howmuch[0] == '2' && tryTemp -> getHouses() >= 2)
 										{
 											Jugador1 -> setMoney_Owned(tryTemp -> getHousePrice()); //for two you gain one
 											tryTemp -> setHouses(tryTemp -> getHouses() - 2);
+											mvprintw(12,80,"Sold 2 houses. \n");
 										} else if (howmuch[0] == '3' && tryTemp -> getHouses() >= 3)
 										{
 											Jugador1 -> setMoney_Owned((tryTemp -> getHousePrice() + tryTemp -> getHousePrice() / 2)); //1 and a half
 											tryTemp -> setHouses(tryTemp -> getHouses() - 3);
-										} else if (howmuch[0] == '4' && tryTemp -> getHouses() >= 4)
+											mvprintw(12,80,"Sold 3 houses. \n");
+										} else if (howmuch[0] == '4' && tryTemp -> getHouses() >= 4 && tryTemp-> getHouses() < 5)
 										{
 											Jugador1 -> setMoney_Owned((tryTemp -> getHousePrice() * 2)); //2
 											tryTemp -> setHouses(tryTemp -> getHouses() - 4);
-										} else if (howmuch[0] == '5' && tryTemp -> getHouses() >= 5)
+											mvprintw(12,80,"Sold 4 houses. \n");
+										} else if (howmuch[0] == '5' && tryTemp -> getHouses() == 5)
 										{
 											Jugador1 -> setMoney_Owned((tryTemp -> getHousePrice() * 2 + tryTemp -> getHousePrice() / 2)); //2 and a half
 											tryTemp -> setHouses(tryTemp -> getHouses() - 5);
 											tryTemp -> setHotels(0);
+											mvprintw(12,80,"Sold everything. \n");
+										} else
+										{
+											mvprintw(12,80,"Can't sell what you ain't got. \n");
 										}
+										board.erase(board.begin() + Espacio);
+										board.insert(board.begin() + Espacio, tryTemp);
 									}
 								}
 							} else { //NOTHING
