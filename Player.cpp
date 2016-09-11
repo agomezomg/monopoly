@@ -29,14 +29,13 @@ int Player::getPosition() {
 	return this -> spaces;
 }
 
-void Player::TurnControl(int spaces){
-	if((this -> spaces + spaces) >= 40){ //if number of spaces moved is >= 40 
+void Player::TurnControl(int spaces) {
+	if((this -> spaces + spaces) >= 40) { //if number of spaces moved is >= 40 
 		int temp =(this -> spaces + spaces) - 40 ;
 		this -> spaces = temp;
 		this -> moneyOwned += 200;
 	} else {
 		this -> spaces += spaces;
-		
 	}
 }
 
@@ -46,52 +45,57 @@ string Player::toString() {
 	return ss.str();
 }
 
-int Player::getMoneyOwned(){
+int Player::getMoneyOwned() {
 	return this->moneyOwned;
 }
 
-void Player::setMoneyOwned(int Price){
-	this->moneyOwned=this->moneyOwned-Price;
+void Player::setMoneyOwned(int Price) {
+	this -> moneyOwned = this -> moneyOwned - Price;
 }
 
 void Player::setMoney_Owned(int Price){
-	this->moneyOwned=this->moneyOwned+Price;
+	this -> moneyOwned = this -> moneyOwned + Price;
 }
 void Player::setProperties(Properties* Properties){
-	this->properties.push_back(Properties);
+	this -> properties.push_back(Properties);
 }
 
-string Player::getProperties(){
+string Player::getProperties() {
 	stringstream ss;
-	ss<<"\n       Your Properties     \n";
+	ss << "\n       Your Properties     \n";
+	
 	for (int i = 0; i < properties.size(); ++i)
-		{
-			ss<<"     "<<properties.at(i)->toString()<<"\n";
-		}	
-return ss.str();
+	{
+		ss << "     " << properties.at(i) -> toString() << "\n";
+	}
+	return ss.str();
 }
 
 bool Player::validarProperties(string Nombre){
+	
 	for (int i = 0; i < properties.size(); ++i)
 	{
 		if (properties.at(i)->getTitle()==Nombre)
 		{
 			return true;
 		}
-	
 	}
+
 	return false;
 }
 
 void Player::setInJail(bool inJail){
-	this->inJail=inJail;
+	this -> inJail = inJail;
 }
 
 bool Player::checkInJail(){
-	return this->inJail;
+	return this -> inJail;
 }
 
 void Player::setPosition(int NewPosition){
-	this->spaces=NewPosition;
+	this -> spaces = NewPosition;
 }
 
+bool Player::checkColorProperties() {
+
+}

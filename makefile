@@ -20,5 +20,5 @@ Table.o:	Table.cpp Table.h
 	g++ -c Table.cpp
 
 clean:
-	rm -f *.o Monopoly
+	rm *.o Monopoly
 
