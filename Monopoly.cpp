@@ -524,7 +524,7 @@ int main(int argc, char const *argv[1])
 						}else if(keyPlayer[0] == '2'){
 							//Observar las propiedades
 							mvprintw(16, 110,Jugador2 -> getProperties().c_str());
-							cleanScreen();
+							//cleanScreen();
 						}else if(keyPlayer[0] == '3'){
 							//Observar la Informacion del jugador
 							mvprintw(15, 80, Jugador2 -> toString().c_str());
