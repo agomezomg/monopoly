@@ -23,34 +23,44 @@ void drawDiceTwo(int);
 void draw(int);
 int drawCard();
 bool ifJail();
+void init_curses();
+void drawSpace1(WINDOW *, int);
+void drawSpace2(WINDOW *, int);
+void drawSpace3(WINDOW *, int);
+void drawSpace4(WINDOW *, int);
+void drawBoard();
 
 int main(int argc, char const *argv[1])
 {
 	initscr();
 	start_color();
+	drawBoard();
 	echo();
 	char key[1];
 	boardPic();
 	//srand(time(0));
 	bool Load=true;
 	int ContTurno=0;
+	
 	vector<Properties*> board;
 	Player* Jugador1;
 	Player* Jugador2;
+	
 	do{
-		move(4,80);
+		move(4,110);
 		printw("WELCOME TO MONOPOLY");
-		move(8,80);
+		move(8,110);
 		printw("NEW GAME --> TAP N");
-		move(10,80);
+		move(10,110);
 		printw("LOAD GAME -> TAP L");
-		move(12,80);
+		move(12,110);
 		printw("EXIT ------> TAP E");
-		move(14,80);
+		move(14,110);
 		printw("OPTION: ");
 		getstr(key);
 		cleanScreen();
 		endwin();
+
 		if(key[0] == 'n' || key[0] == 'N'){
 			if(Load==true)
 			{	
@@ -98,13 +108,19 @@ int main(int argc, char const *argv[1])
 				Jugador1=new Player("Juana",2000);
 				Jugador2=new Player("Juanito",2000);
 				mvprintw(18,80, "New game");
+				initscr();
+				start_color();
+				drawBoard();
 			}		
 			do
-			{	
+			{
+			initscr();
+	start_color();
+	drawBoard();
 				if(Jugador1 -> checkInJail())	//SI EL JUGADOR ESTA EN LA CARCEL
 				{	
-					mvprintw(4,80, "Player ","You are in jail you must ");
-					mvprintw(5,80, "get out to throw the dice again");
+					mvprintw(4,10, "Player ","You are in jail you must ");
+					mvprintw(5,10, "get out to throw the dice again");
 					Jugador1 -> setInJail(ifJail());
 					if(Jugador1 -> checkInJail()){
 						
@@ -117,18 +133,18 @@ int main(int argc, char const *argv[1])
 					char keyPlayer[1];
 					if (ControlTurno % 2 == 0)
 					{
-						mvprintw(4,80, "Player %d",ControlTurno);
-						mvprintw(4,89, Jugador1 -> getName().c_str());
-						mvprintw(5,80,"Choose your option...");
-						mvprintw(6,80,"1. Throwing dice\n");
-						mvprintw(7,80,"2. See your properties\n");
-						mvprintw(8,80,"3. See your data\n");
-						mvprintw(9,80,"4. Sell properties\n");
-						mvprintw(10,80,"5. Build on complete avenues\n");
+						mvprintw(4,110, "Player %d",ControlTurno);
+						mvprintw(4,110, Jugador1 -> getName().c_str());
+						mvprintw(5,110,"Choose your option...");
+						mvprintw(6,110,"1. Throwing dice\n");
+						mvprintw(7,110,"2. See your properties\n");
+						mvprintw(8,110,"3. See your data\n");
+						mvprintw(9,110,"4. Sell properties\n");
+						mvprintw(10,110,"5. Build on complete avenues\n");
 						//QUE NO HAREMOS PROBABLEMENTE mvprintw(12,80,"6.-Trade\n");
-						mvprintw(11,80,"6.-Quit no QUICK \n");
-						mvprintw(12,80,"7.-Save Game for later \n");
-						mvprintw(13,80,"Your option? -> ");
+						mvprintw(11,110,"6.-Quit no QUICK \n");
+						mvprintw(12,110,"7.-Save Game for later \n");
+						mvprintw(13,110,"Your option? -> ");
 						getstr(keyPlayer);
 						cleanScreen();
 						if(keyPlayer[0] == '1'){//TIRAR EL DADO Y VALIDACIONES DE POSICION
@@ -637,7 +653,7 @@ void draw(int space){
         init_pair(2,COLOR_BLACK,COLOR_WHITE);
     	linea[1] = "*   Illinois Avenue   *\n";
     	linea[4] = "*       Rent $20      *\n";
-    	linea[6] = "*  1 house --->  $1000 *\n";
+    	linea[6] = "*  1 house ---> $1000 *\n";
     	linea[7] = "*  2 houses--->  $300 *\n";
     	linea[8] = "*  3 houses--->  $750 *\n";
     	linea[9] = "*  4 houses--->  $925 *\n";
@@ -741,44 +757,44 @@ void draw(int space){
 		mvprintw(23,20,"* Mortgage Value ---> $100 *\n");
 		mvprintw(24,20,"****************************\n");		
 		attroff(COLOR_PAIR(1));
-    /*}else if (space == 2 || space == 17 || space == 33){
-    	/*controlador = 1;
+	}else if (space == 1 || space == 40){
+    	controlador = 1;
 		init_pair(1,COLOR_BLUE,COLOR_WHITE);
 		attron(COLOR_PAIR(1));
 		mvprintw(10,20,"****************************\n");
 		mvprintw(11,20,"*                          *\n");
-		mvprintw(12,20,"*   *******************    *\n");
-		mvprintw(13,20,"*   *      *   *      *    *\n");
-		mvprintw(14,20,"*   *******************    *\n");
-		mvprintw(15,20,"*   *      *   *      *    *\n");
-		mvprintw(16,20,"*   *       ***       *    *\n");
-		mvprintw(17,20,"*   *******************    *\n");
+		mvprintw(12,20,"*     ******     ****      *\n");
+		mvprintw(13,20,"*     *         *    *     *\n");
+		mvprintw(14,20,"*     *  ***    *    *     *\n");
+		mvprintw(15,20,"*     *    *    *    *     *\n");
+		mvprintw(16,20,"*     ******     ****      *\n");
+		mvprintw(17,20,"*                          *\n");
 		mvprintw(18,20,"*                          *\n");
 		mvprintw(19,20,"*                          *\n");
-		mvprintw(20,20,"*        COMMUNITY         *\n");
-		mvprintw(21,20,"*          CHEST           *\n");
+		mvprintw(20,20,"*          COLLECT         *\n");
+		mvprintw(21,20,"*           $200           *\n");
 		mvprintw(22,20,"*                          *\n");
 		mvprintw(23,20,"****************************\n");
 		attroff(COLOR_PAIR(1));
-	}else if (space == 7 || space == 22 || space == 36){
+	}else if (space == 4){
 		controlador = 1;
 		init_pair(1,COLOR_BLUE,COLOR_WHITE);
 		attron(COLOR_PAIR(1));
 		mvprintw(10,20,"****************************\n");
 		mvprintw(11,20,"*                          *\n");
-		mvprintw(12,20,"*          ??????          *\n");
-		mvprintw(13,20,"*         ?      ?         *\n");
-		mvprintw(14,20,"*        ?       ?         *\n");
-		mvprintw(15,20,"*         ?      ?         *\n");
-		mvprintw(16,20,"*               ?          *\n");
-		mvprintw(17,20,"*              ?           *\n");
-		mvprintw(18,20,"*             ?            *\n");
-		mvprintw(19,20,"*            ?             *\n");
-		mvprintw(20,20,"*            ?             *\n");
+		mvprintw(12,20,"*                          *\n");
+		mvprintw(13,20,"*                          *\n");
+		mvprintw(14,20,"*                          *\n");
+		mvprintw(15,20,"*          INCOME          *\n");
+		mvprintw(16,20,"*                          *\n");
+		mvprintw(17,20,"*           TAX            *\n");
+		mvprintw(18,20,"*                          *\n");
+		mvprintw(19,20,"*                          *\n");
+		mvprintw(20,20,"*                          *\n");
 		mvprintw(21,20,"*                          *\n");
-		mvprintw(22,20,"*            *             *\n");
+		mvprintw(22,20,"*                          *\n");
 		mvprintw(23,20,"****************************\n");
-		attroff(COLOR_PAIR(1));*/
+		attroff(COLOR_PAIR(1));
 	}else if(space == 28){
 		controlador = 1;
 		init_pair(1,COLOR_BLACK,COLOR_WHITE);
@@ -818,6 +834,65 @@ void draw(int space){
 		mvprintw(22,20,"*   amount shown on dice.  *\n");
 		mvprintw(23,20,"*   Mortgage Value  $75    *\n");
 		mvprintw(24,20,"****************************\n");
+		attroff(COLOR_PAIR(1));
+	}
+	else if (space == 10){
+		controlador = 1;
+		init_pair(1,COLOR_BLUE,COLOR_WHITE);
+		attron(COLOR_PAIR(1));
+		mvprintw(10,20,"*****************************\n");
+		mvprintw(11,20,"* *     *     *     *     * *\n");
+		mvprintw(12,20,"* ************************* *\n");
+		mvprintw(13,20,"* *     *     *     *     * *\n");
+		mvprintw(14,20,"* *     *     *     *     * *\n");
+		mvprintw(15,20,"* ************************* *\n");
+		mvprintw(16,20,"*                           *\n");
+		mvprintw(17,20,"*  *****    *     *  *      *\n");
+		mvprintw(18,20,"*    *     * *    *  *      *\n");
+		mvprintw(19,20,"*    *    * * *   *  *      *\n");
+		mvprintw(20,20,"*  ***   *     *  *  *****  *\n");
+		mvprintw(21,20,"* ************************* *\n");
+		mvprintw(22,20,"* *     *     *     *     * *\n");
+		mvprintw(23,20,"*****************************\n");
+		attroff(COLOR_PAIR(1));
+	}else if (space == 20)
+	{
+		attron(COLOR_PAIR(1));
+		mvprintw(10,20,"****************************\n");
+		mvprintw(11,20,"*                          *\n");
+		mvprintw(12,20,"*          ******          *\n");
+		mvprintw(13,20,"*        ***    ***        *\n");
+		mvprintw(14,20,"*       ************       *\n");
+		mvprintw(15,20,"*        **********        *\n");
+		mvprintw(16,20,"*         **    **         *\n");
+		mvprintw(17,20,"*                          *\n");
+		mvprintw(18,20,"*                          *\n");
+		mvprintw(19,20,"*                          *\n");
+		mvprintw(20,20,"*           FREE           *\n");
+		mvprintw(21,20,"*         PARKING          *\n");
+		mvprintw(22,20,"*                          *\n");
+		mvprintw(23,20,"*                          *\n");
+		mvprintw(24,20,"****************************\n");		
+		attroff(COLOR_PAIR(1));
+	}
+	else if (space == 30){
+		controlador = 1;
+		init_pair(1,COLOR_BLUE,COLOR_WHITE);
+		attron(COLOR_PAIR(1));
+		mvprintw(10,20,"****************************\n");
+		mvprintw(11,20,"*                          *\n");
+		mvprintw(12,20,"* *****  ***   *****  ***  *\n");
+		mvprintw(13,20,"* *     *   *    *   *   * *\n");
+		mvprintw(14,20,"* *  ** *   *    *   *   * *\n");
+		mvprintw(15,20,"* *****  ***     *    ***  *\n");
+		mvprintw(16,20,"*                          *\n");
+		mvprintw(17,20,"* *****    *     *  *      *\n");
+		mvprintw(18,20,"*   *     * *    *  *      *\n");
+		mvprintw(19,20,"*   *    * * *   *  *      *\n");
+		mvprintw(20,20,"*  **   *     *  *  *****  *\n");
+		mvprintw(21,20,"*                          *\n");
+		mvprintw(22,20,"*                          *\n");
+		mvprintw(23,20,"****************************\n");
 		attroff(COLOR_PAIR(1));
 	}
     if (controlador == 0)
@@ -966,4 +1041,122 @@ bool ifJail(){
 		}
 	}while(keyPlayer[0]!=1&&keyPlayer[0]!=2);
 		
+}
+void init_curses()
+{
+    initscr();
+    start_color();
+    init_pair(1,COLOR_WHITE,COLOR_BLACK);
+    init_pair(2,COLOR_BLUE,COLOR_WHITE);
+    init_pair(3,COLOR_RED,COLOR_WHITE);
+    init_pair(4,COLOR_BLACK,COLOR_WHITE);
+    init_pair(5,COLOR_WHITE,COLOR_YELLOW);
+    init_pair(6,COLOR_BLACK,COLOR_BLACK);
+
+    curs_set(0);
+    keypad(stdscr,TRUE);
+}
+void drawSpace1(WINDOW *menubar, int pair)
+{
+    wattron(menubar,COLOR_PAIR(pair));
+    waddstr(menubar,"|-----|");
+    waddstr(menubar,"|     |");
+    waddstr(menubar,"|     |");
+    waddstr(menubar,"|     |");
+    waddstr(menubar,"|_____|");
+    wattroff(menubar,COLOR_PAIR(pair));
+}
+void drawSpace2(WINDOW *menubar, int pair){
+
+    wattron(menubar,COLOR_PAIR(pair));
+    waddstr(menubar,"|-|");
+    waddstr(menubar,"| |");
+    waddstr(menubar,"| |");
+    waddstr(menubar,"| |");
+    waddstr(menubar,"|_|");
+    wattroff(menubar,COLOR_PAIR(pair));
+}
+void drawSpace3(WINDOW *menubar, int pair)
+{
+
+    wattron(menubar,COLOR_PAIR(pair));
+    waddstr(menubar,"|         ");
+    waddstr(menubar,"|         ");
+    waddstr(menubar,"|         ");
+    waddstr(menubar,"          ");
+    wattroff(menubar,COLOR_PAIR(pair));
+}
+void drawSpace4(WINDOW *menubar, int pair)
+{
+    wattron(menubar,COLOR_PAIR(pair));
+    waddstr(menubar,"          ");
+    wattroff(menubar,COLOR_PAIR(pair));
+}
+void drawBoard(){
+	init_curses();
+	WINDOW **space[10];
+    int pair;
+    for (int i = 0; i < 10; i++)
+    {
+    	space[i] = new WINDOW*[10];
+
+    }
+    init_curses();
+    int altura=4, ancho=7, x=0, y=0, m=0;
+   
+
+    for (int i = 0; i < 10; i++)
+    {
+    	for (int j = 0; j < 10; j++)
+    	{
+    		if ((i>=1&&j>=1)&&(i<=8&&j<=8))
+    		{
+    			space[i][j]=subwin(stdscr,altura,ancho,x,y);
+    			y = y+7;
+    			drawSpace1(space[i][j], 6);
+    			space[i][j]=subwin(stdscr,altura,3,x,y);
+    			drawSpace2(space[i][j], 6);
+    			y = y+3;    	
+    		}else if(i==0  && j==0){
+				space[i][j]=subwin(stdscr,1,10,x,m);
+    			drawSpace3(space[i][j],4);
+   				 space[i][j]=subwin(stdscr,3,10,1,m);
+    			drawSpace3(space[i][j],4);
+    			m = m+10;
+
+			}
+    		else if(i==0  && j>=0){
+				space[i][j]=subwin(stdscr,1,10,x,m);
+    			drawSpace3(space[i][j],5);
+   				 space[i][j]=subwin(stdscr,3,10,1,m);
+    			drawSpace3(space[i][j],4);
+    			m = m+10;
+
+			}	
+			else if(i==9  && j>=0){
+				space[i][j]=subwin(stdscr,1,10,36,m);
+    			drawSpace3(space[i][j],5);
+   				 space[i][j]=subwin(stdscr,3,10,37,m);
+    			drawSpace3(space[i][j],4);
+    			m = m+10;
+
+			}	
+    		else{
+    			space[i][j]=subwin(stdscr,altura,ancho,x,y);
+    			y = y+7;
+    			drawSpace1(space[i][j], 4);
+    			space[i][j]=subwin(stdscr,altura,3,x,y);
+    			drawSpace2(space[i][j], 5);
+    			y = y+3;    	
+    		}
+    			
+    	}
+    	y =0;
+    	m=0;
+    	x = x+4;
+    	
+    }
+    
+
+    refresh();
 }
