@@ -96,12 +96,43 @@ void Player::setPosition(int NewPosition){
 	this -> spaces = NewPosition;
 }
 
-bool Player::checkColorProperties() {
+bool Player::canBuildOnLot(int position) {
+	string toCheck = properties.at(position) -> getColor();
+	int brown = 0;
+	int lightBlue = 0;
+	int pink = 0;
+	int orange = 0;
+	int red = 0;
+	int yellow = 0;
+	int green = 0;
+	int darkBlue = 0;
+
 	for (int i = 0; i < properties.size(); ++i)
 	{
-		if (properties.at(i)->getColor()=="")
+		if ((toCheck == "Brown") && (properties.at(i) -> getColor() == toCheck))
 		{
-			return true;
+			brown++;
+		} else if ((toCheck == "Light Blue") && (properties.at(i) -> getColor() == toCheck))
+		{
+			lightBlue++;
+		} else if ((toCheck == "Pink") && (properties.at(i) -> getColor() == toCheck))
+		{
+			lightBlue++;
+		} else if ((toCheck == "Orange") && (properties.at(i) -> getColor() == toCheck))
+		{
+			lightBlue++;
+		} else if ((toCheck == "Red") && (properties.at(i) -> getColor() == toCheck))
+		{
+			lightBlue++;
+		} else if ((toCheck == "Yellow") && (properties.at(i) -> getColor() == toCheck))
+		{
+			lightBlue++;
+		} else if ((toCheck == "Green") && (properties.at(i) -> getColor() == toCheck))
+		{
+			lightBlue++;
+		} else if ((toCheck == "Dark Blue") && (properties.at(i) -> getColor() == toCheck))
+		{
+			lightBlue++;
 		}
 	}
 }

@@ -29,6 +29,47 @@ Avenue::Avenue(int rent,int sale,int mortgage,int price,string title,bool owned)
     } else if (title == "St. Charles Place")
     {
         this -> color = "Pink";
+    } else if (title == "States Avenue")
+    {
+        this -> color = "Pink";
+    } else if (title == "Virginia Avenue")
+    {
+        this -> color = "Pink";
+    } else if (title == "St. James Place")
+    {
+        this -> color = "Orange";
+    } else if (title == "Tennessee Avenue")
+    {
+        this -> color = "Orange";
+    } else if (title == "New York Avenue")
+    {
+        this -> color = "Orange"; 
+    } else if (title == "Kentucky Avenue")
+    {
+        this -> color = "Red";
+    } else if (title == "Indiana Avenue")
+    {
+        this -> color = "Red";
+    }  else if (title == "Illinois Avenue")
+    {
+        this -> color = "Red";
+    }  else if (title == "Atlantic Avenue")
+    {
+        this -> color = "Yellow";
+    }  else if (title == "Ventnor Avenue")
+    {
+        this -> color = "Yellow";
+    }  else if (title == "Marvin Gardens")
+    {
+        this -> color = "Yellow";
+    }  else if (title == "Park PLace")
+    {
+        this -> color = "Dark Blue";
+    }  else if (title == "Boardwalk")
+    {
+        this -> color = "Dark Blue";
+    } else {
+        this -> color = title;
     }
 }
 
