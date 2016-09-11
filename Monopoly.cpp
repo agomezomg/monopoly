@@ -235,7 +235,9 @@ int main(int argc, char const *argv[1])
 										getstr(toWhom);
 										if (toWhom[0] == '1')
 										{
-											Jugador1 -> sellProperty(tryTemp);
+											Avenue* hello = Jugador1 -> sellProperty(tryTemp);
+											board.erase(board.begin() + Espacio);
+											board.insert(board.begin() + Espacio, hello);											
 											Jugador2 -> setMoneyOwned(Jugador2 -> getMoneyOwned() + tryTemp -> getPrice());
 											mvprintw(14,80,"Se vendio su propiedad al Jugador 2. \n");
 
@@ -250,7 +252,7 @@ int main(int argc, char const *argv[1])
 								} else {
 									char confirm[1];
 									mvprintw(8,80,board.at(Espacio) -> getTitle().c_str());
-									mvprintw(9,80,"Esta Propiedad es tiene casas/hotel. Venderlas? [y/n] \n");
+									mvprintw(9,80,"Esta Propiedad es tiene casas/hoteles. Vender? [y/n] \n");
 									getstr(confirm);
 									if (confirm[0] == 'y' || confirm[0] == 'Y')
 									{
@@ -266,12 +268,15 @@ int main(int argc, char const *argv[1])
 											mvprintw(12,80,"Coolio. \n");
 										} else if (howmuch[0] == '1')
 										{
+											Jugador1 -> setMoneyOwned((Jugador1 -> getMoneyOwned()) + (tryTemp -> getHousePrice()/2));
 											tryTemp -> setHouses(tryTemp -> getHouses() - 1);
 										} else if (howmuch[0] == '2' && tryTemp -> getHouses() >= 2)
 										{
+											Jugador1 -> setMoneyOwned((Jugador1 -> getMoneyOwned()) + (tryTemp -> getHousePrice()));
 											tryTemp -> setHouses(tryTemp -> getHouses() - 2);
 										} else if (howmuch[0] == '3' && tryTemp -> getHouses() == 3)
 										{
+											Jugador1 -> setMoneyOwned((Jugador1 -> getMoneyOwned()) + (tryTemp -> getHousePrice() + tryTemp -> getHousePrice() / 2));
 											tryTemp -> setHouses(0);
 										} 
 									}

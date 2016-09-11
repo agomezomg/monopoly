@@ -13,88 +13,135 @@ using std::stringstream;
 Avenue::Avenue(int rent, int sale, int mortgage, int price, string title, bool owned) : Properties(rent, sale, mortgage, price, title, owned) {
     if (title == "Mediterranean Avenue")
     {
+        this -> ID = 1;
         this -> color = "Brown";
+        this -> houses = 0;
         this -> housePrice = 25;
     } else if (title == "Baltic Avenue")
     {
+        this -> ID = 3;
         this -> color = "Brown";
+        this -> houses = 0;
         this -> housePrice = 25;
     } else if (title == "Oriental Avenue")
     {
+        this -> ID = 6;
         this -> color = "Light Blue";
+        this -> houses = 0;
         this -> housePrice = 25;
     } else if (title == "Vermont Avenue")
     {
+        this -> ID = 8;
         this -> color = "Light Blue";
+        this -> houses = 0;
         this -> housePrice = 25;
     } else if (title == "Connecticut Avenue")
     {
+        this -> ID = 9;
         this -> color = "Light Blue";
+        this -> houses = 0;
         this -> housePrice = 25;
     } else if (title == "St. Charles Place")
     {
+        this -> ID = 11;
         this -> color = "Pink";
+        this -> houses = 0;
         this -> housePrice = 50;
     } else if (title == "States Avenue")
     {
+        this -> ID = 13;
         this -> color = "Pink";
+        this -> houses = 0;
         this -> housePrice = 50;
     } else if (title == "Virginia Avenue")
     {
+        this -> ID = 14;
         this -> color = "Pink";
+        this -> houses = 0;
         this -> housePrice = 50;
     } else if (title == "St. James Place")
     {
+        this -> ID = 16;
         this -> color = "Orange";
+        this -> houses = 0;
         this -> housePrice = 50;
     } else if (title == "Tennessee Avenue")
     {
+        this -> ID = 18;
         this -> color = "Orange";
+        this -> houses = 0;
         this -> housePrice = 50;
     } else if (title == "New York Avenue")
     {
+        this -> ID = 19;
         this -> color = "Orange"; 
+        this -> houses = 0;
         this -> housePrice = 50;
     } else if (title == "Kentucky Avenue")
     {
+        this -> ID = 21;
         this -> color = "Red";
+        this -> houses = 0;
         this -> housePrice = 75;
     } else if (title == "Indiana Avenue")
     {
+        this -> ID = 23;
         this -> color = "Red";
+        this -> houses = 0;
         this -> housePrice = 75;
     }  else if (title == "Illinois Avenue")
     {
+        this -> ID = 24;
         this -> color = "Red";
+        this -> houses = 0;
         this -> housePrice = 75;
     }  else if (title == "Atlantic Avenue")
     {
+        this -> ID = 26;
         this -> color = "Yellow";
+        this -> houses = 0;
         this -> housePrice = 75;
     }  else if (title == "Ventnor Avenue")
     {
+        this -> ID = 28;
         this -> color = "Yellow";
+        this -> houses = 0;
         this -> housePrice = 75;
     }  else if (title == "Marvin Gardens")
     {
+        this -> ID = 29;
         this -> color = "Yellow";
+        this -> houses = 0;
         this -> housePrice = 75;
     }  else if (title == "Pacific Avenue")
     {
-        /* code */
+        this -> ID = 31;
+        this -> color = "Green";
+        this -> houses = 0;
+        this -> housePrice = 100;
     }  else if (title == "North Carolina Avenue")
     {
-        /* code */
+        this -> ID = 32;
+        this -> color = "Green";
+        this -> houses = 0;
+        this -> housePrice = 100;
     } else if (title == "Pennsylvania Avenue")
     {
-        /* code */
+        this -> ID = 34;
+        this -> color = "Green";
+        this -> houses = 0;
+        this -> housePrice = 100;
     }else if (title == "Park PLace")
     {
+        this -> ID = 37;
         this -> color = "Dark Blue";
+        this -> houses = 0;
         this -> housePrice = 100;
     }  else if (title == "Boardwalk")
     {
+        this -> ID = 39;
         this -> color = "Dark Blue";
+        this -> houses = 0;
         this -> housePrice = 100;
     } else {
         this -> color = title;
@@ -119,6 +166,14 @@ int Avenue::getHouses() {
 
 void Avenue::setHouses(int houses) {
 	this -> houses = houses;
+}
+
+int Avenue::getHousePrice() {
+    return this -> housePrice;
+}
+
+void Avenue::setHousePrice(int housePrice) {
+    this -> housePrice = housePrice;
 }
 
 string Avenue::toString() {

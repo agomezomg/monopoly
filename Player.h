@@ -42,5 +42,5 @@ public:
 	void setProperties(Properties*);
 	bool validarProperties(string);
 	bool canBuildOnLot(int);
-	void sellProperty(Avenue*);
+	Avenue* sellProperty(Avenue*);
 };

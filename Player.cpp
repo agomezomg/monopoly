@@ -187,7 +187,7 @@ bool Player::canBuildOnLot(int position) {
 	return false;
 }
 
-void Player::sellProperty(Avenue* temp) {
+Avenue* Player::sellProperty(Avenue* temp) {
 
 	for (int i = 0; i < properties.size(); ++i)
 	{
@@ -198,4 +198,6 @@ void Player::sellProperty(Avenue* temp) {
 			properties.erase(properties.begin() + i);
 		}
 	}
+	
+	return temp;
 }
