@@ -12,7 +12,7 @@ private:
 	int houses;
 	int housePrice;
 public:
-	Avenue(int,int,int,int,string,bool);
+	Avenue(int, int, int, int, string, bool);
 	Avenue();
 	~Avenue();
 	string getTitle();
