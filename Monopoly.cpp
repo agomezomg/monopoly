@@ -223,15 +223,15 @@ int main(int argc, char const *argv[1])
 								{
 									char confirm[1];
 									mvprintw(8,80,tryTemp -> getTitle().c_str());
-									mvprintw(9,80,"Esta Propiedad es tuya, venderla? [y/n] \n");	
+									mvprintw(9,80,"Esta seguro de querer vender/hipotecar? [y/n] \n");	
 									getstr(confirm);
 
 									if (confirm[0] == 'y' || confirm[0] == 'Y')
 									{
 									
 										char toWhom[1];
-										mvprintw(11,80,"1. A Player 2 \n");
-										mvprintw(12,80,"2. Bank \n");
+										mvprintw(11,80,"1. Vender \n");
+										mvprintw(12,80,"2. Hipotecar \n");
 										getstr(toWhom);
 										if (toWhom[0] == '1')
 										{
@@ -242,16 +242,16 @@ int main(int argc, char const *argv[1])
 											mvprintw(14,80,"Se vendio su propiedad al Jugador 2. \n");
 										} else if (toWhom[0] == '2')
 										{
-											Jugador1 = Jugador1 -> removeProperty(Jugador1, board.at(Espacio));								
-											Jugador1 -> setMoney_Owned((tryTemp -> getPrice()));
+											Jugador1 = Jugador1 -> mortgageProperty(Jugador1, board.at(Espacio));								
+											Jugador1 -> setMoney_Owned((tryTemp -> getMortgage()));
 											board.at(Espacio) -> setOwned(false);
-											mvprintw(14,80,"Se vendio su propiedad al banco. \n");
+											mvprintw(14,80,"Se hipoteco su propiedad. \n");
 											
 										} else {
 											mvprintw(14,80,"k bai.");											
 										}
 									}
-								} else {
+								} else if (tryTemp -> getHouses() > 0) {
 									char confirm[1];
 									mvprintw(8,80,board.at(Espacio) -> getTitle().c_str());
 									mvprintw(9,80,"Esta Propiedad es tiene casas/hoteles. Vender? [y/n] \n");

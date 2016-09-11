@@ -44,4 +44,6 @@ public:
 	bool canBuildOnLot(int);
 	void sellProperty(int);
 	Player* removeProperty(Player*, Properties*);
+	Player* mortgageProperty(Player*, Properties*);
+	void payMortgage(int, Properties*);
 };

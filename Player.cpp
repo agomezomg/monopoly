@@ -210,3 +210,95 @@ Player* Player::removeProperty(Player* p, Properties* agh) {
 
 	return p;
 }
+
+Player* Player::mortgageProperty(Player* p, Properties* ugh) {
+	/*if (ugh -> getTitle() == "Mediterranean Avenue")
+    {
+        ugh -> setMortgage((ugh -> getPrice() / 2));
+    } else if (ugh -> getTitle() == "Baltic Avenue")
+    {
+    	ugh -> setMortgage((ugh -> getPrice() / 2));
+    } else if (ugh -> getTitle() == "Oriental Avenue")
+    {
+
+    } else if (ugh -> getTitle() == "Vermont Avenue")
+    {
+    	ugh -> setMortgage(30);
+    } else if (ugh -> getTitle() == "Connecticut Avenue")
+    {
+    	ugh -> setMortgage(30);
+    } else if (ugh -> getTitle() == "St. Charles Place")
+    {
+    	ugh -> setMortgage(30);
+    } else if (ugh -> getTitle() == "States Avenue")
+    {
+    	ugh -> setMortgage(30);
+    } else if (ugh -> getTitle() == "Virginia Avenue")
+    {
+    	ugh -> setMortgage(30);
+    } else if (ugh -> getTitle() == "St. James Place")
+    {
+    	ugh -> setMortgage(30);
+    } else if (ugh -> getTitle() == "Tennessee Avenue")
+    {
+    	ugh -> setMortgage(30);
+    } else if (ugh -> getTitle() == "New York Avenue")
+    {
+    	ugh -> setMortgage(30);
+    } else if (ugh -> getTitle() == "Kentucky Avenue")
+    {
+		ugh -> setMortgage(30);
+    } else if (ugh -> getTitle() == "Indiana Avenue")
+    {
+    	ugh -> setMortgage(30);
+    } else if (ugh -> getTitle() == "Illinois Avenue")
+    {
+    	ugh -> setMortgage(30);
+    } else if (ugh -> getTitle() == "Atlantic Avenue")
+    {
+        ugh -> setMortgage(30);
+    } else if (ugh -> getTitle() == "Ventnor Avenue")
+    {
+    	ugh -> setMortgage(30);
+    } else if (ugh -> getTitle() == "Marvin Gardens")
+    {
+		ugh -> setMortgage(30);
+    } else if (ugh -> getTitle() == "Pacific Avenue")
+    {
+    	ugh -> setMortgage(30);
+    } else if (ugh -> getTitle() == "North Carolina Avenue")
+    {
+    	ugh -> setMortgage(30);
+    } else if (ugh -> getTitle() == "Pennsylvania Avenue")
+    {
+    	ugh -> setMortgage(30);
+    } else if (ugh -> getTitle() == "Park PLace")
+    {
+    	ugh -> setMortgage(30);
+    } else if (ugh -> getTitle() == "Boardwalk")
+    {
+    	ugh -> setMortgage(30);
+    } //else esa papada no existe*/
+
+    ugh -> setMortgage((ugh -> getPrice() / 2));
+
+    for (int i = 0; i < properties.size(); ++i)
+    {
+    	if (ugh -> getTitle() == properties.at(i) -> getTitle())
+    	{
+    		this -> properties.at(i) -> setMortgage(ugh -> getMortgage());
+    	}
+    }
+}
+
+void Player::payMortgage(int payM, Properties* mortgagedP) {
+	for (int i = 0; i < properties.size(); ++i)
+	{
+		if (mortgagedP -> getTitle() == properties.at(i) -> getTitle())
+		{
+			this -> properties.at(i) -> setMortgage(0);
+		}
+	}
+
+	this -> moneyOwned = ((mortgagedP -> getMortgage()) * 0.1) + mortgagedP -> getMortgage();
+}

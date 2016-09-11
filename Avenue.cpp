@@ -13,132 +13,154 @@ using std::stringstream;
 Avenue::Avenue(int rent, int sale, int mortgage, int price, string title, bool owned) : Properties(rent, sale, mortgage, price, title, owned) {
     if (title == "Mediterranean Avenue")
     {
+        this -> mortgage = 0;
         this -> ID = 1;
         this -> color = "Brown";
         this -> houses = 0;
         this -> housePrice = 25;
     } else if (title == "Baltic Avenue")
     {
+        this -> mortgage = 0;
         this -> ID = 3;
         this -> color = "Brown";
         this -> houses = 0;
         this -> housePrice = 25;
     } else if (title == "Oriental Avenue")
     {
+        this -> mortgage = 0;
         this -> ID = 6;
         this -> color = "Light Blue";
         this -> houses = 0;
         this -> housePrice = 25;
     } else if (title == "Vermont Avenue")
     {
+        this -> mortgage = 0;
         this -> ID = 8;
         this -> color = "Light Blue";
         this -> houses = 0;
         this -> housePrice = 25;
     } else if (title == "Connecticut Avenue")
     {
+        this -> mortgage = 0;
         this -> ID = 9;
         this -> color = "Light Blue";
         this -> houses = 0;
         this -> housePrice = 25;
     } else if (title == "St. Charles Place")
     {
+        this -> mortgage = 0;
         this -> ID = 11;
         this -> color = "Pink";
         this -> houses = 0;
         this -> housePrice = 50;
     } else if (title == "States Avenue")
     {
+        this -> mortgage = 0;
         this -> ID = 13;
         this -> color = "Pink";
         this -> houses = 0;
         this -> housePrice = 50;
     } else if (title == "Virginia Avenue")
     {
+        this -> mortgage = 0;
         this -> ID = 14;
         this -> color = "Pink";
         this -> houses = 0;
         this -> housePrice = 50;
     } else if (title == "St. James Place")
     {
+        this -> mortgage = 0;
         this -> ID = 16;
         this -> color = "Orange";
         this -> houses = 0;
         this -> housePrice = 50;
     } else if (title == "Tennessee Avenue")
     {
+        this -> mortgage = 0;
         this -> ID = 18;
         this -> color = "Orange";
         this -> houses = 0;
         this -> housePrice = 50;
     } else if (title == "New York Avenue")
     {
+        this -> mortgage = 0;
         this -> ID = 19;
         this -> color = "Orange"; 
         this -> houses = 0;
         this -> housePrice = 50;
     } else if (title == "Kentucky Avenue")
     {
+        this -> mortgage = 0;
         this -> ID = 21;
         this -> color = "Red";
         this -> houses = 0;
         this -> housePrice = 75;
     } else if (title == "Indiana Avenue")
     {
+        this -> mortgage = 0;
         this -> ID = 23;
         this -> color = "Red";
         this -> houses = 0;
         this -> housePrice = 75;
     }  else if (title == "Illinois Avenue")
     {
+        this -> mortgage = 0;
         this -> ID = 24;
         this -> color = "Red";
         this -> houses = 0;
         this -> housePrice = 75;
     }  else if (title == "Atlantic Avenue")
     {
+        this -> mortgage = 0;
         this -> ID = 26;
         this -> color = "Yellow";
         this -> houses = 0;
         this -> housePrice = 75;
     }  else if (title == "Ventnor Avenue")
     {
+        this -> mortgage = 0;
         this -> ID = 28;
         this -> color = "Yellow";
         this -> houses = 0;
         this -> housePrice = 75;
     }  else if (title == "Marvin Gardens")
     {
+        this -> mortgage = 0;
         this -> ID = 29;
         this -> color = "Yellow";
         this -> houses = 0;
         this -> housePrice = 75;
     }  else if (title == "Pacific Avenue")
     {
+        this -> mortgage = 0;
         this -> ID = 31;
         this -> color = "Green";
         this -> houses = 0;
         this -> housePrice = 100;
     }  else if (title == "North Carolina Avenue")
     {
+        this -> mortgage = 0;
         this -> ID = 32;
         this -> color = "Green";
         this -> houses = 0;
         this -> housePrice = 100;
     } else if (title == "Pennsylvania Avenue")
     {
+        this -> mortgage = 0;
         this -> ID = 34;
         this -> color = "Green";
         this -> houses = 0;
         this -> housePrice = 100;
     }else if (title == "Park PLace")
     {
+        this -> mortgage = 0;
         this -> ID = 37;
         this -> color = "Dark Blue";
         this -> houses = 0;
         this -> housePrice = 100;
     }  else if (title == "Boardwalk")
     {
+        this -> mortgage = 0;
         this -> ID = 39;
         this -> color = "Dark Blue";
         this -> houses = 0;
