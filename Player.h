@@ -38,4 +38,5 @@ public:
 	string getProperties();
 	void setProperties(Properties*);
 	bool validarProperties(string);
+	bool checkColorProperties();
 };

@@ -97,5 +97,11 @@ void Player::setPosition(int NewPosition){
 }
 
 bool Player::checkColorProperties() {
-
+	for (int i = 0; i < properties.size(); ++i)
+	{
+		if (properties.at(i)->getColor()=="")
+		{
+			return true;
+		}
+	}
 }

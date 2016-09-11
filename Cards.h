@@ -9,6 +9,7 @@ private:
 	string cardType;
 	string cardTitle;
 	string cardDescription;
+	
 public:
 	Cards();
 	~Cards();
