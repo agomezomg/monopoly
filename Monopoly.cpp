@@ -80,7 +80,7 @@ int main(int argc, char const *argv[1])
 				board.push_back(new Avenue(20,240,120,240,"Illinois-Avenue",false));
 				board.push_back(new Avenue(2,60,30,60,"RailRoad",false));
 				board.push_back(new Avenue(22,260,130,260,"Atlantic-Avenue",false));
-				board.push_back(new Avenue(22,260,130,260,"Vetnor-Avenue",false));
+				board.push_back(new Avenue(22,260,130,260,"Ventnor-Avenue",false));
 				board.push_back(new Avenue(22,260,130,260,"Water-Services",false));
 				board.push_back(new Avenue(24,280,140,280,"Jardines-Marvin-Avenue",false));
 				board.push_back(new Avenue(22,260,130,260,"GO-TO-JAIL",false));
@@ -235,16 +235,18 @@ int main(int argc, char const *argv[1])
 										getstr(toWhom);
 										if (toWhom[0] == '1')
 										{
-											Avenue* hello = Jugador1 -> sellProperty(tryTemp);
-											board.erase(board.begin() + Espacio);
-											board.insert(board.begin() + Espacio, hello);											
-											Jugador2 -> setMoneyOwned(Jugador2 -> getMoneyOwned() + tryTemp -> getPrice());
+											Jugador1 = Jugador1 -> removeProperty(Jugador1, board.at(Espacio));								
+											Jugador1 -> setMoney_Owned((tryTemp -> getPrice()));
+											Jugador2 -> setMoneyOwned(board.at(Espacio) -> getPrice());
+											Jugador2 -> setProperties(board.at(Espacio));
 											mvprintw(14,80,"Se vendio su propiedad al Jugador 2. \n");
-
 										} else if (toWhom[0] == '2')
 										{
-											Jugador1 -> sellProperty(tryTemp);
+											Jugador1 = Jugador1 -> removeProperty(Jugador1, board.at(Espacio));								
+											Jugador1 -> setMoney_Owned((tryTemp -> getPrice()));
+											board.at(Espacio) -> setOwned(false);
 											mvprintw(14,80,"Se vendio su propiedad al banco. \n");
+											
 										} else {
 											mvprintw(14,80,"k bai.");											
 										}
@@ -268,15 +270,15 @@ int main(int argc, char const *argv[1])
 											mvprintw(12,80,"Coolio. \n");
 										} else if (howmuch[0] == '1')
 										{
-											Jugador1 -> setMoneyOwned((Jugador1 -> getMoneyOwned()) + (tryTemp -> getHousePrice()/2));
+											Jugador1 -> setMoney_Owned((tryTemp -> getHousePrice()/2));
 											tryTemp -> setHouses(tryTemp -> getHouses() - 1);
 										} else if (howmuch[0] == '2' && tryTemp -> getHouses() >= 2)
 										{
-											Jugador1 -> setMoneyOwned((Jugador1 -> getMoneyOwned()) + (tryTemp -> getHousePrice()));
+											Jugador1 -> setMoney_Owned(tryTemp -> getHousePrice());
 											tryTemp -> setHouses(tryTemp -> getHouses() - 2);
 										} else if (howmuch[0] == '3' && tryTemp -> getHouses() == 3)
 										{
-											Jugador1 -> setMoneyOwned((Jugador1 -> getMoneyOwned()) + (tryTemp -> getHousePrice() + tryTemp -> getHousePrice() / 2));
+											Jugador1 -> setMoney_Owned((tryTemp -> getHousePrice() + tryTemp -> getHousePrice() / 2));
 											tryTemp -> setHouses(0);
 										} 
 									}
@@ -318,9 +320,11 @@ int main(int argc, char const *argv[1])
 							ficheroSalida2 << "Exit";
 							ficheroSalida2.close();*FIN GUARDADO JUADOR 2/*/
 						}
+					} else {
+
 					}
 				}
-			}while (true);
+			} while (true);
 		}else if(key[0] == 'l' || key[0] == 'L'){
 			Load=false;
 			ifstream myfile (argv[1]);
@@ -953,10 +957,10 @@ bool ifJail(){
 			getch();
 			mvprintw(12,80, "Dices");
 			if(D1==D2){
-				mvprintw(12,80, "Dices are in your favor!");				
+				mvprintw(12,80, "The dices favour you!");				
 				return false;
 			}else{
-				mvprintw(12,80, "Dices are not in yout favor stay in jail");
+				mvprintw(12,80, "The dices don't favour you, stay in jail.");
 				return true;
 			}
 		}

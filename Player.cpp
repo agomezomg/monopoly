@@ -187,17 +187,26 @@ bool Player::canBuildOnLot(int position) {
 	return false;
 }
 
-Avenue* Player::sellProperty(Avenue* temp) {
+void Player::sellProperty(int position) {
+	this -> properties.erase(properties.begin() + position);
+}
 
+Player* Player::removeProperty(Player* p, Properties* agh) {
+	bool canErase = false;
+	int qualifier;
 	for (int i = 0; i < properties.size(); ++i)
 	{
-		if (temp -> getTitle() == properties.at(i) -> getTitle())
+		if (properties.at(i) -> getTitle() == agh -> getTitle())
 		{
-			this -> moneyOwned += temp -> getPrice();
-			temp -> setOwned(false);
-			properties.erase(properties.begin() + i);
+			qualifier = i;
+			canErase = true;
 		}
 	}
-	
-	return temp;
+
+	if (canErase)
+	{
+		p -> sellProperty(qualifier);
+	}
+
+	return p;
 }

@@ -26,6 +26,6 @@ public:
 	void printCard(int space);
 	string toString();
 	int getHotels();
-	void setHotels(int);
+	void buildHotels(int);
 	void drawItem(int space);
 };

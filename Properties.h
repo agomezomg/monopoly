@@ -21,7 +21,7 @@ public:
 	~Properties();
 	Properties();
 	int getID();
-	void setID();
+	void setID(int);
 	int getPrice();
 	void setPrice(int);
 	int getRent();

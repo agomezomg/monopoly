@@ -411,3 +411,11 @@ void Avenue::drawItem(int space) {
         
     attroff(COLOR_PAIR(2));  
 }
+
+int Avenue::getHotels() {
+    return this -> hotels;
+}
+
+void Avenue::buildHotels(int hotels) {
+    this -> hotels += hotels;
+}

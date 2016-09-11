@@ -275,3 +275,11 @@ string Properties::toString(int SobreCargar) { //pending
 	return ss.str();
 }
 //int rent,int sale,int mortgage,int price,string title,bool owned
+
+int Properties::getID() {
+	return this -> ID;
+}
+
+void Properties::setID(int ID) {
+	this -> ID = ID;
+}
