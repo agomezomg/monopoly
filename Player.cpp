@@ -68,11 +68,11 @@ void Player::setProperties(Properties* Properties){
 
 string Player::getProperties() {
 	stringstream ss;
-	ss << "\n       Your Properties     \n";
+	ss << "\n                        Your Properties:     \n";
 	
 	for (int i = 0; i < properties.size(); ++i)
 	{
-		ss << "     " << properties.at(i) -> toString() << "\n";
+		ss << "                       " << properties.at(i) -> toString() << "\n";
 	}
 	return ss.str();
 }
