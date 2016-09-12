@@ -3,13 +3,13 @@
 4 60 0 60 Valtic-Avenue 0
 4 60 0 60 TAXES 0
 2 60 0 60 RailRoad 0
-6 100 0 100 Oriental-Avenue 1
+6 100 0 100 Oriental-Avenue 0
 2 60 0 60 FORTUNE 0
 6 100 0 100 Connecticut-Avenue 0
 8 120 0 120 Vermont-Avenue 0
 8 120 0 120 VISIT-JAIL 0
 10 140 0 140 Plaza-San-Carlos 0
-2 60 0 60 Electric-Services 1
+2 60 0 60 Electric-Services 0
 10 140 0 140 Status-Avenue 0
 12 160 0 160 Virginia-Avenue 0
 2 60 0 60 RailRoad 0
@@ -18,7 +18,7 @@
 14 180 0 180 Tennessee-Avenue 0
 16 200 0 200 New-York-Avenue 0
 2 60 0 60 FREE-SPACE 0
-18 220 0 220 Kentucky-Avenue 1
+18 220 0 220 Kentucky-Avenue 0
 2 60 0 60 FORTUNE 0
 18 220 0 220 Indiana-Avenue 0
 20 240 0 240 Illinois-Avenue 0
@@ -38,6 +38,4 @@
 2 60 0 60 TAXES 0
 50 400 0 400 Muelle-Avenue 0
 2 60 0 60 GO 0
-0 0 0 0 GO 0
-0 0 0 0 GO 0
 Exit
