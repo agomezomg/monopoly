@@ -448,3 +448,190 @@ int Avenue::getHotels() {
 void Avenue::setHotels(int hotels) {
     this -> hotels = hotels;
 }
+
+int Avenue::getRent() {
+    if (this -> houses == 1)
+    {
+        if (title == "Pennsylvania Avenue")
+        {
+            return this -> rent * 5 - 10;
+        } else if (title == "Boardwalk")
+        {
+            return this -> rent * 5 - 50;
+        }
+        return this -> rent * 5;
+    } else if (this -> houses == 2)
+    {
+        if (title == "Conneticut Avenue" || title == "New York Avenue" || title == "Kentucky Avenue" || title == "Indiana Avenue")
+        {
+            return this -> rent * 15 - 20;
+        } else if (title == "St. James Place" || title == "Tennessee Avenue")
+        {
+            return this -> rent * 15 - 10;
+        } else if (title == "Pennsylvania Avenue")
+        {
+            return this -> rent * 15 + 30;
+        } else if (title == "Boardwalk")
+        {
+            return this -> rent * 15 - 150;
+        }
+        return this -> rent * 15;
+    } else if (this -> houses == 3)
+    {
+        if (title == "Connecticut Avenue")
+        {
+            return this -> rent * 45 - 60;
+        } else if (title == "Virginia Avenue")
+        {
+            return this -> rent * 15 - 40;
+        } else if (title == "St. James Place" || title == "Tennessee Avenue")
+        {
+            return this -> rent * 15 - 80;
+        } else if (title == "New York Avenue")
+        {
+            return this -> rent * 15 - 75;
+        } else if (title == "Kentucky Avenue" || title == "Indiana Avenue")
+        {
+            return this -> rent* 15 - 110;
+        } else if (title == "Illinois Avenue")
+        {
+            return this -> rent * 15 - 150;
+        } else if (title == "Atlantic Avenue" || title == "Ventnor Avenue")
+        {
+            return this -> rent * 40;
+        } else if (title == "Marvin Gardens")
+        {
+            return this -> rent * 40 - 110;
+        } else if (title == "Pacific Avenue" || title == "North Carolina Avenue")
+        {
+            return rent * 35 - 10;
+        } else if (title == "Pennsylvania Avenue")
+        {
+            return this -> rent * 40 - 120;
+        } else if (title == "Park Place")
+        {
+            return this -> rent * 30 + 50;
+        } else if (title == "Boardwalk")
+        {
+            return this -> rent * 28;
+        }
+        return this -> rent * 45;
+    } else if (this -> houses == 4)
+    {
+        if (title == "Oriental Avenue" || title == "Vermont Avenue")
+        {
+            return this -> rent * 75 - 50;
+        } else if (title == "Connecticut Avenue")
+        {
+            return this -> rent * 55 + 10;
+        } else if (title == "St. Charles Place" || title == "States Avenue")
+        {
+            return 625;
+        } else if (title == "Virginia Avenue")
+        {
+            return 700;
+        } else if (title == "St. James Place" || title == "Tennessee Avenue")
+        {
+            return 750; 
+        } else if (title == "New York Avenue")
+        {
+            return 800;
+        } else if (title == "Kentucky Avenue" || title == "Indiana Avenue")
+        {
+            return 875;
+        } else if (title == "Illinois Avenue")
+        {
+            return 925;
+        } else if (title == "Atlantic Avenue" || title == "Ventnor Avenue")
+        {
+            return 975;
+        } else if (title == "Marvin Gardens")
+        {
+            return 1025;
+        } else if (title == "Pacific Avenue" || title == "North Carolina Avenue")
+        {
+            return 1100;
+        } else if (title == "Pennsylvania Avenue")
+        {
+            return 1200;
+        } else if (title == "Park Place")
+        {
+            return 1300;
+        } else if (title == "Boardwalk")
+        {
+            return 1700;
+        }
+        return this -> rent * 80;
+    } else if (this -> houses == 5)
+    {
+        if (title == "Mediterranean Avenue")
+        {
+            return 250;
+        } else if (title == "Baltic Avenue")
+        {
+            return 450;
+        } else if (title == "Oriental Avenue")
+        {
+            return 550;
+        } else if (title == "Vermont Avenue")
+        {
+            return 550;
+        } else if (title == "Connecticut Avenue")
+        {
+            return 600;
+        } else if (title == "St. Charles Place")
+        {
+            return 750;
+        } else if (title == "States Avenue")
+        {
+            return 750;
+        } else if (title == "Virginia Avenue")
+        {
+            return 900;
+        } else if (title == "St. James Place")
+        {
+            return 950;
+        } else if (title == "Tennessee Avenue")
+        {
+            return 950;
+        } else if (title == "New York Avenue")
+        {
+            return 1000;
+        } else if (title == "Kentucky Avenue")
+        {
+            return 1050;
+        } else if (title == "Indiana Avenue")
+        {
+            return 1050;
+        }  else if (title == "Illinois Avenue")
+        {
+            return 1100;
+        }  else if (title == "Atlantic Avenue")
+        {
+            return 1150;
+        }  else if (title == "Ventnor Avenue")
+        {
+            return 1150;
+        }  else if (title == "Marvin Gardens")
+        {
+            return 1200;
+        }  else if (title == "Pacific Avenue")
+        {
+           return 1275;
+        }  else if (title == "North Carolina Avenue")
+        {
+            return 1275;
+        } else if (title == "Pennsylvania Avenue")
+        {
+            return 1400;
+        } else if (title == "Park PLace")
+        {
+            return 1500;
+        } else if (title == "Boardwalk")
+        {
+            return 2000;
+        }
+    }
+    return this -> rent;
+
+}

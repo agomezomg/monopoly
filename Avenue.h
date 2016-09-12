@@ -28,4 +28,5 @@ public:
 	int getHotels();
 	void setHotels(int);
 	void drawItem(int space);
+	int getRent();
 };

@@ -41,10 +41,10 @@ public:
 	string getProperties(int);
 	void setProperties(Properties*);
 	bool validarProperties(string);
-	bool canBuildOnLot(int);
+	bool canBuildOnLot(Avenue*);
 	void sellProperty(int);
 	Player* removeProperty(Player*, Properties*);
 	Properties* mortgageProperty(Properties*);
 	void payMortgage(Properties*, int);
-	Properties* buildOnLot(Properties*);
+	Avenue* buildOnLot(Avenue*);
 };

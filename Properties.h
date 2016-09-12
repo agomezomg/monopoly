@@ -24,7 +24,7 @@ public:
 	void setID(int);
 	int getPrice();
 	void setPrice(int);
-	int getRent();
+	virtual int getRent();
 	void setRent(int);
 	int getSalePrice();
 	void setSalePrice(int);

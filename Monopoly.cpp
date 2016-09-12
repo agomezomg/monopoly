@@ -108,7 +108,7 @@ int main(int argc, char const *argv[1])
 				//Falta La Inicializacion de las fichas 
 				Jugador1=new Player("Juana",1500);
 				Jugador2=new Player("Juanito",1500);
-				mvprintw(18,80, "New game");
+				mvprintw(18,110, "New game");
 				initscr();
 				start_color();
 				drawBoard();
@@ -120,8 +120,8 @@ int main(int argc, char const *argv[1])
 				drawBoard();
 				if(Jugador1 -> checkInJail())	//SI EL JUGADOR ESTA EN LA CARCEL
 				{	
-					mvprintw(4,10, "Player ","You are in jail you must ");
-					mvprintw(5,10, "get out to throw the dice again");
+					mvprintw(4, 110, "Player ","You are in jail you must ");
+					mvprintw(5, 110, "get out to throw the dice again");
 					Jugador1 -> setInJail(ifJail());
 					if(Jugador1 -> checkInJail()){
 						
@@ -129,12 +129,12 @@ int main(int argc, char const *argv[1])
 						Jugador1 -> setMoneyOwned(50);
 					}
 					cleanScreen();
-				}else{
+				} else {
 					int ControlTurno = 0, dice1 = 0, dice2 = 0;
 					char keyPlayer[1];
 					if (ControlTurno % 2 == 0)
 					{
-						mvprintw(4,110, "Player %d",ControlTurno);
+						mvprintw(4,110, "Player 1: ");
 						mvprintw(4,110, Jugador1 -> getName().c_str());
 						mvprintw(5,110,"Choose your option...");
 						mvprintw(6,110,"1. Throwing dice\n");
@@ -217,9 +217,14 @@ int main(int argc, char const *argv[1])
 										mvprintw(9,80,board.at(Espacio)->getTitle().c_str());
 										mvprintw(8,80,"Esta Propiedad es tuya");	
 									}else{//COBRARLE AL JUGADOR LA RENTA
-										mvprintw(8,80,"Pagas la renta.");
-										mvprintw(9,80,board.at(Espacio) -> getTitle().c_str());
-										Jugador1 -> setMoneyOwned(board.at(Espacio) -> getRent());
+										if (board.at(Espacio) -> getMortgage() == 0)
+										{
+											mvprintw(8,80,"Pagas la renta.");
+											mvprintw(9,80,board.at(Espacio) -> getTitle().c_str());
+											Jugador1 -> setMoneyOwned(board.at(Espacio) -> getRent());
+										} else {
+											mvprintw(8,80,"Property is mortgaged, no rent is payed!");
+										}
 									}
 								}
 							}
@@ -228,10 +233,11 @@ int main(int argc, char const *argv[1])
 							cleanScreen();
 						}else if(keyPlayer[0] == '2'){
 							//Observar las propiedades
-							mvprintw(16,80,Jugador1 -> getProperties().c_str());
+							mvprintw(16, 110,Jugador1 -> getProperties().c_str());
+							cleanScreen();
 						}else if(keyPlayer[0] == '3'){
 							//Observar la Informacion del jugador
-							mvprintw(15,80, Jugador1 -> toString().c_str());
+							mvprintw(15, 80, Jugador1 -> toString().c_str());
 						}else if(keyPlayer[0] == '4') {//Vender Propiedades
 							int Espacio = Jugador1 -> getPosition() - 1;
 							if (Jugador1 -> validarProperties(board.at(Espacio) -> getTitle())) {
@@ -254,7 +260,7 @@ int main(int argc, char const *argv[1])
 										if (toWhom[0] == '1')
 										{
 											Jugador1 = Jugador1 -> removeProperty(Jugador1, board.at(Espacio));								
-											Jugador1 -> setMoney_Owned((tryTemp -> getPrice()));
+											Jugador1 -> setMoney_Owned((board.at(Espacio) -> getPrice()));
 											Jugador2 -> setMoneyOwned(board.at(Espacio) -> getPrice());
 											Jugador2 -> setProperties(board.at(Espacio));
 											mvprintw(14, 80, "Your property has been sold! \n");
@@ -327,17 +333,17 @@ int main(int argc, char const *argv[1])
 											Jugador1 -> setMoney_Owned((tryTemp -> getHousePrice() * 2 + tryTemp -> getHousePrice() / 2)); //2 and a half
 											tryTemp -> setHouses(tryTemp -> getHouses() - 5);
 											tryTemp -> setHotels(0);
-											mvprintw(12,80,"Sold everything. \n");
+											mvprintw(12, 80,"Sold everything. \n");
 										} else
 										{
-											mvprintw(12,80,"Can't sell what you ain't got. \n");
+											mvprintw(12, 80, "Can't sell what you ain't got. \n");
 										}
 										board.erase(board.begin() + Espacio);
 										board.insert(board.begin() + Espacio, tryTemp);
 									}
 								}
 							} else { //NOTHING
-								mvprintw(8,80,"Esta propiedad no te pertenece.");
+								mvprintw(8,80,"This doesn't belong to you.");
 							}
 
 							echo();
@@ -345,7 +351,30 @@ int main(int argc, char const *argv[1])
 							cleanScreen();
 						}else if (keyPlayer[0] == '5')//Construir Casas
 						{
-							//hmmmm hello there, me distraigo rapido, entonces dejo comentado aqui pa saber que tengo que hacer eso bai <3
+							int Espacio = Jugador1 -> getPosition() - 1;				
+							if (Jugador1 -> validarProperties(board.at(Espacio) -> getTitle()))
+							{	
+								mvprintw(9, 80, board.at(Espacio) -> getTitle().c_str());
+								Avenue* tryTemp = dynamic_cast<Avenue*>(board.at(Espacio));
+								//hmmmm hello there, me distraigo rapido, entonces dejo comentado aqui pa saber que tengo que hacer esto bai <3
+								if (Jugador1 -> canBuildOnLot(tryTemp) && Jugador1 -> getMoneyOwned() >= tryTemp -> getHousePrice())
+								{
+									board.erase(board.begin() + Espacio);
+									board.insert(board.begin() + Espacio, Jugador1 -> buildOnLot(tryTemp));
+									Avenue* secondaryTemp = dynamic_cast<Avenue*>(board.at(Espacio));
+									secondaryTemp -> setRent(secondaryTemp -> getRent());
+									board.erase(board.begin() + Espacio);
+									board.insert(board.begin() + Espacio, secondaryTemp);
+									mvprintw(9,80,"A house has been built.\n");
+								} else { //hello, if you are here, it's because the lot is not an avenue that can be built OR because you ain't got the $$$
+									mvprintw(9,80,"Lot/Player does not meet prerequisites.\n");
+								}
+							} else { //soz, it just doesn't.
+								mvprintw(8,80,"This doesn't belong to you.");
+							}
+							echo();
+							getch();
+							cleanScreen();
 						}else if(keyPlayer[0] == '6'){//Abandonar el juego
 							endwin();
 							exit(0);
@@ -371,11 +400,12 @@ int main(int argc, char const *argv[1])
 							ficheroSalida2 <<Jugador2->toString(1)<<endl;
 							ficheroSalida2<< Jugador2->getProperties(1)<<endl;
 							ficheroSalida2 << "Exit";
-							ficheroSalida2.close();*FIN GUARDADO JUADOR 2/*/
+							ficheroSalida2.close();*FIN GUARDADO JUGADOR 2/*/
 						}
-					} else {
+					} else { //AQUI LO DE PLAYER2 JUE PUCHA X_X
 
 					}
+				ControlTurno++;
 				}
 			} while (true);
 		}else if(key[0] == 'l' || key[0] == 'L'){

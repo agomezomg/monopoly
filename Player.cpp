@@ -110,8 +110,9 @@ void Player::setPosition(int NewPosition){
 	this -> spaces = NewPosition;
 }
 
-bool Player::canBuildOnLot(int position) {
-	string toCheck = properties.at(position) -> getColor();
+bool Player::canBuildOnLot(Avenue* hereWeGoAgain) {
+	Avenue* temporary;
+	string toCheck = hereWeGoAgain -> getColor();
 	int brown = 0;
 	int lightBlue = 0;
 	int pink = 0;
@@ -123,67 +124,73 @@ bool Player::canBuildOnLot(int position) {
 
 	for (int i = 0; i < properties.size(); ++i)
 	{
-		if ((toCheck == "Brown") && (properties.at(i) -> getColor() == toCheck))
+		temporary = dynamic_cast<Avenue*>(properties.at(i));
+		if (((toCheck == "Brown") && (properties.at(i) -> getColor() == toCheck)))
 		{
 			brown++;
+			if (brown == 2 && temporary -> getHouses() <= hereWeGoAgain -> getHouses())
+			{
+				properties.at(i) -> setRent(properties.at(i) -> getRent() * 2);
+				return true;
+			}
 		} else if ((toCheck == "Light Blue") && (properties.at(i) -> getColor() == toCheck))
 		{
+			if (lightBlue == 3 && temporary -> getHouses() <= hereWeGoAgain -> getHouses())
+			{
+				properties.at(i) -> setRent(properties.at(i) -> getRent() * 2);
+				return true;
+			}
 			lightBlue++;
 		} else if ((toCheck == "Pink") && (properties.at(i) -> getColor() == toCheck))
 		{
+			if (pink == 3 && temporary -> getHouses() <= hereWeGoAgain -> getHouses())
+			{
+				properties.at(i) -> setRent(properties.at(i) -> getRent() * 2);
+				return true;
+			}
 			pink++;
 		} else if ((toCheck == "Orange") && (properties.at(i) -> getColor() == toCheck))
 		{
+			if (orange == 3 && temporary -> getHouses() <= hereWeGoAgain -> getHouses())
+			{
+				properties.at(i) -> setRent(properties.at(i) -> getRent() * 2);
+				return true;
+			} 
 			orange++;
 		} else if ((toCheck == "Red") && (properties.at(i) -> getColor() == toCheck))
 		{
+			if (red == 3 && temporary -> getHouses() <= hereWeGoAgain -> getHouses())
+			{
+				properties.at(i) -> setRent(properties.at(i) -> getRent() * 2);
+				return true;
+			}
 			red++;
 		} else if ((toCheck == "Yellow") && (properties.at(i) -> getColor() == toCheck))
 		{
+			if (yellow == 3 && temporary -> getHouses() <= hereWeGoAgain -> getHouses())
+			{
+				properties.at(i) -> setRent(properties.at(i) -> getRent() * 2);
+				return true;
+			}
 			yellow++;
 		} else if ((toCheck == "Green") && (properties.at(i) -> getColor() == toCheck))
 		{
+			if (green == 3 && temporary -> getHouses() <= hereWeGoAgain -> getHouses())
+			{
+				properties.at(i) -> setRent(properties.at(i) -> getRent() * 2);
+				return true;
+			}
 			green++;
 		} else if ((toCheck == "Dark Blue") && (properties.at(i) -> getColor() == toCheck))
 		{
+			if (darkBlue == 2 && temporary -> getHouses() <= hereWeGoAgain -> getHouses())
+			{
+				properties.at(i) -> setRent(properties.at(i) -> getRent() * 2);
+				return true;
+			}
 			darkBlue++;
 		}
 	}
-
-	if (brown == 2)
-	{
-		properties.at(position) -> setRent(properties.at(position) -> getRent() * 2);
-		return true;
-	} else if (lightBlue == 3)
-	{
-		properties.at(position) -> setRent(properties.at(position) -> getRent() * 2);
-		return true;
-	} else if (pink == 3)
-	{
-		properties.at(position) -> setRent(properties.at(position) -> getRent() * 2);
-		return true;
-	} else if (orange == 3)
-	{
-		properties.at(position) -> setRent(properties.at(position) -> getRent() * 2);
-		return true;
-	} else if (red == 3)
-	{
-		properties.at(position) -> setRent(properties.at(position) -> getRent() * 2);
-		return true;
-	} else if (yellow == 3)
-	{
-		properties.at(position) -> setRent(properties.at(position) -> getRent() * 2);
-		return true;
-	} else if (green == 3)
-	{
-		properties.at(position) -> setRent(properties.at(position) -> getRent() * 2);
-		return true;
-	} else if (darkBlue == 2)
-	{
-		properties.at(position) -> setRent(properties.at(position) -> getRent() * 2);
-		return true;
-	}
-	
 	return false;
 }
 
@@ -307,4 +314,12 @@ void Player::payMortgage(Properties* mortgagedP, int mortgageDue) {
 
 	this -> moneyOwned = moneyOwned - mortgageDue;
 	mortgagedP -> setMortgage(0);
+}
+
+Avenue* Player::buildOnLot(Avenue* p) {
+	this -> moneyOwned = moneyOwned - p -> getHousePrice();
+	p -> setHouses(p -> getHouses() + 1);
+	p -> setRent(p -> getRent());
+	
+	return p;
 }
